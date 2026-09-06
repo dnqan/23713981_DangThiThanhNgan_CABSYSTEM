@@ -1618,183 +1618,289 @@ flowchart LR
 
 # 13. Acceptance Criteria
 
-Acceptance Criteria (AC) là các tiêu chí nghiệm thu được sử dụng để xác định một chức năng đã được triển khai hoàn chỉnh và đáp ứng đúng yêu cầu nghiệp vụ hay chưa.
+Acceptance Criteria (AC) được sử dụng để xác định các điều kiện mà hệ thống phải đáp ứng để một chức năng nghiệp vụ được xem là hoàn thành và thỏa mãn yêu cầu.
 
-Một chức năng được xem là **đạt** khi tất cả các Acceptance Criteria tương ứng đều được đáp ứng.
+## 13.1. Bảng Acceptance Criteria
 
-## 13.1. Acceptance Criteria cho quản lý tài khoản
-
-| Mã AC    | Use Case                         | SR liên quan | Acceptance Criteria                                                                       |
-| -------- | -------------------------------- | ------------ | ----------------------------------------------------------------------------------------- |
-| **AC01** | UC01 – Đăng ký tài khoản         | SR01         | Người dùng có thể đăng ký tài khoản khi cung cấp đầy đủ thông tin hợp lệ.                 |
-| **AC02** | UC01 – Đăng ký tài khoản         | SR01         | Hệ thống không cho phép đăng ký khi thông tin bắt buộc bị thiếu hoặc không hợp lệ.        |
-| **AC03** | UC01 – Đăng ký tài khoản         | SR01         | Hệ thống không cho phép tạo tài khoản trùng thông tin định danh đã tồn tại theo quy định. |
-| **AC04** | UC02 – Đăng nhập                 | SR02         | Người dùng đăng nhập thành công khi cung cấp thông tin xác thực hợp lệ.                   |
-| **AC05** | UC02 – Đăng nhập                 | SR02         | Hệ thống từ chối đăng nhập khi thông tin xác thực không hợp lệ.                           |
-| **AC06** | UC03 – Quản lý thông tin cá nhân | SR03         | Người dùng có thể xem thông tin cá nhân của tài khoản.                                    |
-| **AC07** | UC03 – Quản lý thông tin cá nhân | SR03         | Người dùng có thể cập nhật thông tin khi dữ liệu mới hợp lệ.                              |
-| **AC08** | UC03 – Quản lý thông tin cá nhân | SR03         | Hệ thống không lưu thông tin khi dữ liệu cập nhật không hợp lệ.                           |
-
----
-
-## 13.2. Acceptance Criteria cho đặt xe
-
-| Mã AC    | Use Case                     | SR liên quan | Acceptance Criteria                                                                     |
-| -------- | ---------------------------- | ------------ | --------------------------------------------------------------------------------------- |
-| **AC09** | UC04 – Đặt xe                | SR04, SR05   | Khách hàng có thể tạo yêu cầu đặt xe khi cung cấp đầy đủ thông tin hợp lệ.              |
-| **AC10** | UC04 – Đặt xe                | SR05         | Hệ thống từ chối yêu cầu khi điểm đón hoặc điểm đến không hợp lệ.                       |
-| **AC11** | UC04 – Đặt xe                | SR06         | Hệ thống tính và hiển thị cước phí dự kiến trước khi khách hàng xác nhận đặt xe.        |
-| **AC12** | UC04 – Đặt xe                | SR07         | Sau khi tạo yêu cầu, hệ thống ghi nhận yêu cầu với trạng thái phù hợp.                  |
-| **AC13** | UC05 – Hủy yêu cầu đặt xe    | SR07         | Khách hàng có thể hủy yêu cầu khi yêu cầu đang ở trạng thái được phép hủy.              |
-| **AC14** | UC05 – Hủy yêu cầu đặt xe    | SR07         | Hệ thống không cho phép hủy yêu cầu khi trạng thái chuyến không còn cho phép hủy.       |
-| **AC15** | UC06 – Xem lịch sử chuyến đi | SR08         | Khách hàng có thể xem danh sách các chuyến đi thuộc tài khoản của mình.                 |
-| **AC16** | UC06 – Xem lịch sử chuyến đi | SR08         | Thông tin lịch sử phải thể hiện tối thiểu trạng thái, thời gian và thông tin chuyến đi. |
-
----
-
-## 13.3. Acceptance Criteria cho phân công tài xế
-
-| Mã AC    | Use Case                        | SR liên quan | Acceptance Criteria                                                                             |
-| -------- | ------------------------------- | ------------ | ----------------------------------------------------------------------------------------------- |
-| **AC17** | UC07 – Phân công tài xế         | SR11, SR12   | Hệ thống có thể tìm kiếm và lựa chọn tài xế đáp ứng điều kiện phân công.                        |
-| **AC18** | UC07 – Phân công tài xế         | SR12         | Hệ thống gửi yêu cầu nhận chuyến đến tài xế được lựa chọn.                                      |
-| **AC19** | UC07 – Phân công tài xế         | SR14         | Khi tài xế từ chối hoặc không phản hồi, hệ thống có thể tiếp tục tìm tài xế khác.               |
-| **AC20** | UC07 – Phân công tài xế         | SR14         | Khi không còn tài xế phù hợp, hệ thống thông báo cho khách hàng và cập nhật trạng thái yêu cầu. |
-| **AC21** | UC08 – Tiếp nhận yêu cầu chuyến | SR13         | Tài xế có thể xem thông tin yêu cầu được phân công.                                             |
-| **AC22** | UC08 – Tiếp nhận yêu cầu chuyến | SR13         | Tài xế có thể chấp nhận hoặc từ chối yêu cầu.                                                   |
-| **AC23** | UC08 – Tiếp nhận yêu cầu chuyến | SR13         | Khi tài xế chấp nhận, hệ thống cập nhật tài xế được phân công cho chuyến.                       |
-
----
-
-## 13.4. Acceptance Criteria cho thực hiện và theo dõi chuyến đi
-
-| Mã AC    | Use Case                          | SR liên quan | Acceptance Criteria                                                                                   |
-| -------- | --------------------------------- | ------------ | ----------------------------------------------------------------------------------------------------- |
-| **AC24** | UC09 – Theo dõi chuyến đi         | SR17, SR18   | Khách hàng có thể xem trạng thái hiện tại của chuyến đi.                                              |
-| **AC25** | UC09 – Theo dõi chuyến đi         | SR18         | Hệ thống cập nhật thông tin vị trí của tài xế trong quá trình thực hiện chuyến khi có dữ liệu hợp lệ. |
-| **AC26** | UC10 – Thực hiện chuyến đi        | SR19         | Tài xế chỉ có thể bắt đầu chuyến khi đã được phân công cho chuyến đó.                                 |
-| **AC27** | UC10 – Thực hiện chuyến đi        | SR19         | Khi tài xế bắt đầu chuyến, trạng thái chuyến được cập nhật tương ứng.                                 |
-| **AC28** | UC10 – Thực hiện chuyến đi        | SR20         | Tài xế có thể xác nhận kết thúc chuyến khi đáp ứng điều kiện hoàn thành.                              |
-| **AC29** | UC10 – Thực hiện chuyến đi        | SR20         | Khi kết thúc chuyến, hệ thống cập nhật chuyến sang trạng thái hoàn thành.                             |
-| **AC30** | UC11 – Xử lý trường hợp phát sinh | SR21         | Người dùng hoặc tài xế có thể ghi nhận trường hợp phát sinh trong chuyến đi.                          |
-| **AC31** | UC11 – Xử lý trường hợp phát sinh | SR21         | Nhân viên vận hành có thể tiếp nhận và cập nhật kết quả xử lý trường hợp phát sinh.                   |
+| Mã AC    | SR tương ứng | Acceptance Criteria                                                                                                                    |
+| -------- | ------------ | -------------------------------------------------------------------------------------------------------------------------------------- |
+| **AC01** | SR01         | Khi khách hàng nhập đầy đủ thông tin hợp lệ và đăng ký, hệ thống phải tạo tài khoản thành công và thông báo kết quả.                   |
+| **AC02** | SR02         | Khi người dùng cung cấp thông tin đăng nhập hợp lệ, hệ thống phải xác thực thành công và cho phép truy cập các chức năng theo vai trò. |
+| **AC03** | SR03         | Người dùng có thể xem và cập nhật thông tin cá nhân; hệ thống phải kiểm tra dữ liệu trước khi lưu.                                     |
+| **AC04** | SR04         | Khi khách hàng nhập đầy đủ thông tin đặt xe hợp lệ, hệ thống phải tạo yêu cầu đặt xe và sinh mã yêu cầu duy nhất.                      |
+| **AC05** | SR05         | Hệ thống phải từ chối yêu cầu nếu thiếu hoặc có thông tin đặt xe không hợp lệ và phải thông báo nguyên nhân.                           |
+| **AC06** | SR06         | Hệ thống phải tính và hiển thị cước dự kiến dựa trên thông tin của yêu cầu đặt xe.                                                     |
+| **AC07** | SR07         | Khách hàng có thể hủy yêu cầu đặt xe khi yêu cầu đang ở trạng thái cho phép hủy; hệ thống phải cập nhật trạng thái sau khi hủy.        |
+| **AC08** | SR08         | Khách hàng có thể xem danh sách và thông tin các chuyến đi đã thực hiện thuộc tài khoản của mình.                                      |
+| **AC09** | SR09         | Nhân viên vận hành có thể xem và quản lý thông tin tài xế theo quyền được cấp.                                                         |
+| **AC10** | SR10         | Hệ thống phải hiển thị và cập nhật đúng trạng thái hoạt động hiện tại của tài xế.                                                      |
+| **AC11** | SR11         | Khi có yêu cầu đặt xe hợp lệ, hệ thống phải tìm kiếm các tài xế đáp ứng điều kiện phân công.                                           |
+| **AC12** | SR12         | Hệ thống phải gửi yêu cầu nhận chuyến đến tài xế được lựa chọn và ghi nhận kết quả phân công.                                          |
+| **AC13** | SR13         | Tài xế có thể xem yêu cầu được gửi đến và thực hiện chấp nhận hoặc từ chối yêu cầu.                                                    |
+| **AC14** | SR14         | Khi tài xế từ chối hoặc không phản hồi, hệ thống phải có khả năng chuyển sang tìm kiếm tài xế phù hợp khác.                            |
+| **AC15** | SR15         | Khi tài xế chấp nhận yêu cầu, hệ thống phải tạo và xác nhận chuyến đi với thông tin khách hàng, tài xế và chuyến tương ứng.            |
+| **AC16** | SR16         | Hệ thống phải cập nhật trạng thái chuyến đi đúng theo các bước nghiệp vụ và không cho phép chuyển sang trạng thái không hợp lệ.        |
+| **AC17** | SR17         | Khách hàng và nhân viên vận hành có thể xem trạng thái hiện tại của chuyến đi theo quyền được cấp.                                     |
+| **AC18** | SR18         | Hệ thống phải cập nhật thông tin vị trí của tài xế trong quá trình thực hiện chuyến khi nhận được dữ liệu vị trí hợp lệ.               |
+| **AC19** | SR19         | Tài xế chỉ có thể bắt đầu chuyến khi đã được phân công và chuyến đang ở trạng thái cho phép bắt đầu.                                   |
+| **AC20** | SR20         | Tài xế có thể kết thúc chuyến khi đã hoàn thành hành trình; hệ thống phải cập nhật chuyến sang trạng thái hoàn thành.                  |
+| **AC21** | SR21         | Khi phát sinh vấn đề trong chuyến đi, hệ thống phải cho phép ghi nhận thông tin và chuyển thông tin đến bên có trách nhiệm xử lý.      |
+| **AC22** | SR22         | Nhân viên vận hành có thể thêm, xem và cập nhật thông tin phương tiện theo quyền được cấp.                                             |
+| **AC23** | SR23         | Hệ thống phải cho phép theo dõi và cập nhật trạng thái của phương tiện.                                                                |
+| **AC24** | SR24         | Hệ thống phải cho phép gán phương tiện cho tài xế và lưu thông tin gán phương tiện.                                                    |
+| **AC25** | SR25         | Khi chuyến đi hoàn thành, hệ thống phải tính và lưu cước phí cuối cùng của chuyến.                                                     |
+| **AC26** | SR26         | Với phương thức tiền mặt, tài xế có thể xác nhận đã nhận tiền và hệ thống phải cập nhật giao dịch thành thanh toán thành công.         |
+| **AC27** | SR27         | Với phương thức điện tử, hệ thống phải gửi yêu cầu thanh toán đến cổng thanh toán và tiếp nhận kết quả giao dịch.                      |
+| **AC28** | SR28         | Hệ thống phải cập nhật trạng thái thanh toán dựa trên kết quả giao dịch nhận được.                                                     |
+| **AC29** | SR29         | Khi thanh toán thất bại, hệ thống phải thông báo cho khách hàng và cho phép thực hiện lại hoặc lựa chọn phương thức thanh toán khác.   |
+| **AC30** | SR30         | Khách hàng có thể xem số tiền, phương thức và trạng thái thanh toán của chuyến đi.                                                     |
+| **AC31** | SR31         | Khi yêu cầu đặt xe được tạo hoặc thay đổi trạng thái theo quy định, hệ thống phải gửi thông báo đến khách hàng liên quan.              |
+| **AC32** | SR32         | Khi tài xế được phân công, hệ thống phải gửi thông báo đến khách hàng và tài xế liên quan.                                             |
+| **AC33** | SR33         | Khi trạng thái chuyến đi thay đổi tại các trạng thái cần thông báo, hệ thống phải gửi thông báo đến đối tượng liên quan.               |
+| **AC34** | SR34         | Khi giao dịch thanh toán có kết quả, hệ thống phải gửi thông báo kết quả thanh toán cho khách hàng.                                    |
+| **AC35** | SR35         | Hệ thống phải lưu trạng thái gửi của thông báo và ghi nhận lỗi khi thông báo không được gửi thành công.                                |
+| **AC36** | SR36         | Sau khi chuyến đi hoàn thành, khách hàng có thể đánh giá chuyến đi theo mức đánh giá mà hệ thống hỗ trợ.                               |
+| **AC37** | SR37         | Khách hàng có thể đánh giá tài xế sau chuyến đi và hệ thống phải liên kết đánh giá với đúng tài xế.                                    |
+| **AC38** | SR38         | Hệ thống phải lưu đánh giá và cập nhật dữ liệu đánh giá tổng hợp của tài xế.                                                           |
+| **AC39** | SR39         | Nhân viên vận hành có thể tra cứu và quản lý thông tin khách hàng theo quyền được cấp.                                                 |
+| **AC40** | SR40         | Nhân viên vận hành có thể theo dõi trạng thái và hoạt động của tài xế.                                                                 |
+| **AC41** | SR41         | Nhân viên vận hành có thể xem danh sách và trạng thái các chuyến đang diễn ra.                                                         |
+| **AC42** | SR42         | Khi có trường hợp phát sinh, nhân viên vận hành có thể tiếp nhận, cập nhật trạng thái và ghi nhận kết quả xử lý.                       |
+| **AC43** | SR43         | Quản trị viên có thể quản lý tài khoản nhân viên và thiết lập quyền truy cập phù hợp.                                                  |
+| **AC44** | SR44         | Hệ thống phải tạo báo cáo số lượng chuyến theo khoảng thời gian và các tiêu chí được hỗ trợ.                                           |
+| **AC45** | SR45         | Hệ thống phải tính toán và hiển thị doanh thu theo khoảng thời gian được lựa chọn.                                                     |
+| **AC46** | SR46         | Hệ thống phải tính và hiển thị tỷ lệ hoàn thành chuyến dựa trên dữ liệu chuyến đi.                                                     |
+| **AC47** | SR47         | Hệ thống phải tính và hiển thị tỷ lệ hủy chuyến dựa trên dữ liệu đặt xe/chuyến đi.                                                     |
+| **AC48** | SR48         | Hệ thống phải cung cấp các chỉ số cần thiết để quản lý đánh giá hiệu quả hoạt động của tài xế.                                         |
+| **AC49** | SR49         | Hệ thống phải kiểm tra vai trò và quyền của người dùng trước khi cho phép truy cập chức năng được bảo vệ.                              |
+| **AC50** | SR50         | Dữ liệu cá nhân, thông tin phương tiện, vị trí và giao dịch phải được bảo vệ khỏi truy cập trái phép.                                  |
+| **AC51** | SR51         | Hệ thống phải ghi nhận các thao tác quan trọng cùng thông tin người thực hiện, thời điểm và đối tượng bị tác động.                     |
 
 ---
 
-## 13.5. Acceptance Criteria cho thanh toán
+## 13.2. Acceptance Criteria chi tiết cho các chức năng nghiệp vụ chính
 
-| Mã AC    | Use Case                         | SR liên quan | Acceptance Criteria                                                                   |
-| -------- | -------------------------------- | ------------ | ------------------------------------------------------------------------------------- |
-| **AC32** | UC12 – Tính cước chuyến đi       | SR25         | Hệ thống có thể xác định cước phí cuối cùng sau khi chuyến đi hoàn thành.             |
-| **AC33** | UC12 – Tính cước chuyến đi       | SR25         | Cước phí cuối cùng được lưu và liên kết với chuyến đi tương ứng.                      |
-| **AC34** | UC13 – Thanh toán                | SR26         | Khách hàng có thể thanh toán bằng tiền mặt theo quy trình nghiệp vụ.                  |
-| **AC35** | UC13 – Thanh toán                | SR27         | Khách hàng có thể thực hiện thanh toán điện tử thông qua cổng thanh toán được hỗ trợ. |
-| **AC36** | UC13 – Thanh toán                | SR28         | Khi giao dịch thành công, hệ thống cập nhật trạng thái thanh toán thành công.         |
-| **AC37** | UC13 – Thanh toán                | SR28         | Khi giao dịch chưa có kết quả, hệ thống không được ghi nhận là thanh toán thành công. |
-| **AC38** | UC14 – Xử lý thanh toán thất bại | SR29         | Khi thanh toán thất bại, hệ thống thông báo kết quả cho khách hàng.                   |
-| **AC39** | UC14 – Xử lý thanh toán thất bại | SR29         | Khách hàng có thể thực hiện lại thanh toán hoặc lựa chọn phương thức thanh toán khác. |
+Đối với các chức năng nghiệp vụ quan trọng, Acceptance Criteria được phân rã chi tiết hơn để làm cơ sở xây dựng Test Case.
 
----
+### SR04 – Tạo yêu cầu đặt xe
 
-## 13.6. Acceptance Criteria cho đánh giá và thông báo
+| Mã AC      | Điều kiện                                     | Kết quả mong đợi                                                      |
+| ---------- | --------------------------------------------- | --------------------------------------------------------------------- |
+| **AC04.1** | Khách hàng nhập đầy đủ thông tin hợp lệ       | Hệ thống cho phép tạo yêu cầu đặt xe.                                 |
+| **AC04.2** | Khách hàng bỏ trống thông tin bắt buộc        | Hệ thống không tạo yêu cầu và thông báo trường thông tin cần bổ sung. |
+| **AC04.3** | Thông tin điểm đón hoặc điểm đến không hợp lệ | Hệ thống từ chối yêu cầu và thông báo lỗi.                            |
+| **AC04.4** | Tạo yêu cầu thành công                        | Hệ thống sinh mã yêu cầu và lưu trạng thái ban đầu.                   |
 
-| Mã AC    | Use Case                  | SR liên quan           | Acceptance Criteria                                                                  |
-| -------- | ------------------------- | ---------------------- | ------------------------------------------------------------------------------------ |
-| **AC40** | UC15 – Đánh giá chuyến đi | SR36, SR37             | Khách hàng có thể đánh giá sau khi chuyến đi hoàn thành.                             |
-| **AC41** | UC15 – Đánh giá chuyến đi | SR36, SR37             | Hệ thống không cho phép đánh giá đối với chuyến chưa hoàn thành.                     |
-| **AC42** | UC15 – Đánh giá chuyến đi | SR38                   | Đánh giá được lưu và liên kết với chuyến đi, khách hàng và tài xế tương ứng.         |
-| **AC43** | UC16 – Gửi thông báo      | SR31, SR32, SR33, SR34 | Hệ thống gửi thông báo đến đúng đối tượng khi phát sinh sự kiện nghiệp vụ tương ứng. |
-| **AC44** | UC16 – Gửi thông báo      | SR35                   | Hệ thống ghi nhận trạng thái gửi thông báo.                                          |
-| **AC45** | UC16 – Gửi thông báo      | SR35                   | Khi gửi thất bại, hệ thống ghi nhận lỗi và xử lý gửi lại theo quy định.              |
+### SR12 – Phân công tài xế
 
----
+| Mã AC      | Điều kiện                | Kết quả mong đợi                                                  |
+| ---------- | ------------------------ | ----------------------------------------------------------------- |
+| **AC12.1** | Có tài xế phù hợp        | Hệ thống gửi yêu cầu nhận chuyến đến tài xế phù hợp.              |
+| **AC12.2** | Tài xế chấp nhận         | Hệ thống ghi nhận tài xế và xác nhận chuyến.                      |
+| **AC12.3** | Tài xế từ chối           | Hệ thống tìm tài xế phù hợp tiếp theo.                            |
+| **AC12.4** | Không còn tài xế phù hợp | Hệ thống thông báo cho khách hàng và cập nhật trạng thái yêu cầu. |
 
-## 13.7. Acceptance Criteria cho quản lý vận hành
+### SR16 – Cập nhật trạng thái chuyến đi
 
-| Mã AC    | Use Case                            | SR liên quan | Acceptance Criteria                                                                |
-| -------- | ----------------------------------- | ------------ | ---------------------------------------------------------------------------------- |
-| **AC46** | UC17 – Quản lý khách hàng           | SR39         | Nhân viên vận hành có thể xem và quản lý thông tin khách hàng theo quyền được cấp. |
-| **AC47** | UC18 – Quản lý tài xế               | SR09, SR40   | Nhân viên vận hành có thể xem và quản lý thông tin tài xế.                         |
-| **AC48** | UC18 – Quản lý tài xế               | SR10         | Hệ thống thể hiện được trạng thái hoạt động hiện tại của tài xế.                   |
-| **AC49** | UC19 – Quản lý phương tiện          | SR22, SR23   | Nhân viên vận hành có thể quản lý thông tin và trạng thái phương tiện.             |
-| **AC50** | UC19 – Quản lý phương tiện          | SR24         | Hệ thống quản lý được thông tin phương tiện được gán cho tài xế.                   |
-| **AC51** | UC20 – Theo dõi chuyến đang diễn ra | SR41         | Nhân viên vận hành có thể xem danh sách và trạng thái các chuyến đang diễn ra.     |
-| **AC52** | UC21 – Xử lý sự cố                  | SR42         | Nhân viên vận hành có thể tiếp nhận, cập nhật và hoàn tất xử lý sự cố.             |
+| Mã AC      | Điều kiện                                                           | Kết quả mong đợi                                       |
+| ---------- | ------------------------------------------------------------------- | ------------------------------------------------------ |
+| **AC16.1** | Chuyến được xác nhận                                                | Trạng thái được cập nhật thành trạng thái đã xác nhận. |
+| **AC16.2** | Tài xế bắt đầu chuyến                                               | Trạng thái được cập nhật thành đang thực hiện.         |
+| **AC16.3** | Tài xế kết thúc chuyến                                              | Trạng thái được cập nhật thành hoàn thành.             |
+| **AC16.4** | Người dùng thực hiện thao tác không phù hợp với trạng thái hiện tại | Hệ thống từ chối thao tác.                             |
 
----
+### SR13 – Tiếp nhận yêu cầu chuyến
 
-## 13.8. Acceptance Criteria cho báo cáo và quản trị
+| Mã AC      | Điều kiện                    | Kết quả mong đợi                                                 |
+| ---------- | ---------------------------- | ---------------------------------------------------------------- |
+| **AC13.1** | Tài xế có yêu cầu chuyến mới | Hệ thống hiển thị thông tin yêu cầu.                             |
+| **AC13.2** | Tài xế chọn chấp nhận        | Hệ thống ghi nhận tài xế nhận chuyến.                            |
+| **AC13.3** | Tài xế chọn từ chối          | Hệ thống ghi nhận từ chối và tiếp tục quy trình tìm tài xế khác. |
 
-| Mã AC    | Use Case                               | SR liên quan | Acceptance Criteria                                                                |
-| -------- | -------------------------------------- | ------------ | ---------------------------------------------------------------------------------- |
-| **AC53** | UC22 – Xem báo cáo                     | SR44         | Người có quyền có thể xem báo cáo số lượng chuyến theo khoảng thời gian được chọn. |
-| **AC54** | UC22 – Xem báo cáo                     | SR45         | Người có quyền có thể xem báo cáo doanh thu.                                       |
-| **AC55** | UC22 – Xem báo cáo                     | SR46, SR47   | Hệ thống cung cấp tỷ lệ hoàn thành và tỷ lệ hủy chuyến dựa trên dữ liệu nghiệp vụ. |
-| **AC56** | UC22 – Xem báo cáo                     | SR48         | Hệ thống cung cấp các chỉ số phục vụ đánh giá hiệu quả tài xế.                     |
-| **AC57** | UC23 – Quản lý tài khoản và phân quyền | SR43, SR49   | Quản trị viên có thể quản lý tài khoản và quyền truy cập của người dùng.           |
-| **AC58** | UC23 – Quản lý tài khoản và phân quyền | SR49         | Người dùng không thể truy cập chức năng ngoài quyền được cấp.                      |
-| **AC59** | UC24 – Xem nhật ký hoạt động           | SR51         | Hệ thống ghi nhận các thao tác quan trọng kèm thông tin cần thiết để truy vết.     |
-| **AC60** | UC24 – Xem nhật ký hoạt động           | SR51         | Quản trị viên có quyền có thể xem và tra cứu nhật ký hoạt động.                    |
+### SR13 – Thanh toán
 
----
+| Mã AC      | Điều kiện                                   | Kết quả mong đợi                                                                  |
+| ---------- | ------------------------------------------- | --------------------------------------------------------------------------------- |
+| **AC27.1** | Khách hàng chọn thanh toán điện tử          | Hệ thống tạo yêu cầu thanh toán và chuyển đến cổng thanh toán.                    |
+| **AC27.2** | Cổng thanh toán trả về thành công           | Hệ thống cập nhật giao dịch thành công.                                           |
+| **AC27.3** | Cổng thanh toán trả về thất bại             | Hệ thống cập nhật giao dịch thất bại và thông báo cho khách hàng.                 |
+| **AC27.4** | Không nhận được phản hồi từ cổng thanh toán | Hệ thống không ghi nhận thành công và xử lý giao dịch ở trạng thái chưa hoàn tất. |
 
-## 13.9. Acceptance Criteria cho yêu cầu phi chức năng
+### SR36/SR37 – Đánh giá
 
-Ngoài các tiêu chí nghiệm thu chức năng, hệ thống phải đáp ứng các tiêu chí chất lượng sau:
-
-| Mã AC    | NFR liên quan | Acceptance Criteria                                                                                                         |
-| -------- | ------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| **AC61** | NFR01–NFR04   | Các chức năng chính phải đáp ứng mức thời gian phản hồi được quy định trong đặc tả hệ thống.                                |
-| **AC62** | NFR05–NFR08   | Hệ thống phải duy trì hoạt động ổn định và đảm bảo tính toàn vẹn dữ liệu khi xảy ra lỗi.                                    |
-| **AC63** | NFR09–NFR13   | Người dùng chỉ có thể truy cập dữ liệu và chức năng phù hợp với quyền được cấp; các thao tác quan trọng phải được ghi nhận. |
-| **AC64** | NFR14–NFR17   | Hệ thống có khả năng mở rộng người dùng, dịch vụ và phương thức thanh toán mà không phải xây dựng lại toàn bộ hệ thống.     |
-| **AC65** | NFR18–NFR20   | Các thành phần hệ thống có thể được bảo trì, thay đổi và kiểm tra mà hạn chế ảnh hưởng đến các thành phần khác.             |
-| **AC66** | NFR21–NFR23   | Giao diện và thông báo phải rõ ràng, dễ sử dụng và hỗ trợ người dùng xử lý các thao tác không hợp lệ.                       |
+| Mã AC      | Điều kiện                      | Kết quả mong đợi                                    |
+| ---------- | ------------------------------ | --------------------------------------------------- |
+| **AC36.1** | Chuyến đã hoàn thành           | Khách hàng được phép đánh giá.                      |
+| **AC36.2** | Chuyến chưa hoàn thành         | Hệ thống không cho phép đánh giá.                   |
+| **AC36.3** | Khách hàng gửi đánh giá hợp lệ | Hệ thống lưu đánh giá vào đúng chuyến đi và tài xế. |
 
 ---
 
-## 13.10. Ma trận truy xuất SR – AC
+## 13.3. Nguyên tắc nghiệm thu
 
-| SR            | Acceptance Criteria                                                 |
-| ------------- | ------------------------------------------------------------------- |
-| **SR01**      | AC01, AC02, AC03                                                    |
-| **SR02**      | AC04, AC05                                                          |
-| **SR03**      | AC06, AC07, AC08                                                    |
-| **SR04**      | AC09                                                                |
-| **SR05**      | AC09, AC10                                                          |
-| **SR06**      | AC11                                                                |
-| **SR07**      | AC12, AC13, AC14                                                    |
-| **SR08**      | AC15, AC16                                                          |
-| **SR09**      | AC47                                                                |
-| **SR10**      | AC48                                                                |
-| **SR11**      | AC17                                                                |
-| **SR12**      | AC17, AC18                                                          |
-| **SR13**      | AC21, AC22, AC23                                                    |
-| **SR14**      | AC19, AC20                                                          |
-| **SR15**      | AC23                                                                |
-| **SR16**      | AC27, AC29                                                          |
-| **SR17**      | AC24                                                                |
-| **SR18**      | AC25                                                                |
-| **SR19**      | AC26, AC27                                                          |
-| **SR20**      | AC28, AC29                                                          |
-| **SR21**      | AC30, AC31                                                          |
-| **SR22**      | AC49                                                                |
-| **SR23**      | AC49                                                                |
-| **SR24**      | AC50                                                                |
-| **SR25**      | AC32, AC33                                                          |
-| **SR26**      | AC34                                                                |
-| **SR27**      | AC35                                                                |
-| **SR28**      | AC36, AC37                                                          |
-| **SR29**      | AC38, AC39                                                          |
-| **SR30**      | *(cần bổ sung Use Case xem thông tin thanh toán nếu nhóm giữ SR30)* |
-| **SR31–SR35** | AC43–AC45                                                           |
-| **SR36–SR38** | AC40–AC42                                                           |
-| **SR39**      | AC46                                                                |
-| **SR40**      | AC47, AC48                                                          |
-| **SR41**      | AC51                                                                |
-| **SR42**      | AC52                                                                |
-| **SR43**      | AC57                                                                |
-| **SR44–SR48** | AC53–AC56                                                           |
-| **SR49**      | AC57, AC58                                                          |
-| **SR50**      | AC62, AC63                                                          |
-| **SR51**      | AC59, AC60                                                          |
+Một System Requirement được xem là **hoàn thành** khi:
+
+1. Tất cả Acceptance Criteria tương ứng đều đạt.
+2. Chức năng hoạt động đúng với luồng nghiệp vụ đã đặc tả.
+3. Các trường hợp ngoại lệ quan trọng được xử lý đúng.
+4. Dữ liệu được lưu trữ và cập nhật chính xác.
+5. Người dùng chỉ được thực hiện chức năng phù hợp với quyền được cấp.
+6. Không phát sinh lỗi làm ảnh hưởng đến các nghiệp vụ liên quan.
+
+# 14. Requirements Traceability Matrix
+
+Ma trận truy vết được sử dụng để đảm bảo mỗi Business Requirement đều được phân rã thành các quy trình nghiệp vụ, chức năng hệ thống, Use Case và tiêu chí nghiệm thu tương ứng. Qua đó đảm bảo không có yêu cầu nào bị bỏ sót trong quá trình phân tích, thiết kế và kiểm thử.
+
+## 14.1. Ma trận truy vết tổng quát
+
+| Business Requirement                                | Business Process                       | System Requirement                                         | Use Case                           |
+| --------------------------------------------------- | -------------------------------------- | ---------------------------------------------------------- | ---------------------------------- |
+| **BG01 – Quản lý và đặt xe**                        | BP01 – Đặt xe và phân công tài xế      | SR01, SR02, SR03, SR04, SR05, SR06, SR07, SR08             | UC01, UC02, UC03, UC04, UC05, UC06 |
+| **BG01 – Quản lý và đặt xe**                        | BP02 – Thực hiện và theo dõi chuyến đi | SR16, SR17, SR18, SR19, SR20                               | UC09, UC10                         |
+| **BG01 – Quản lý và đặt xe**                        | BP04 – Đánh giá chuyến đi và tài xế    | SR36, SR37, SR38                                           | UC15                               |
+| **BG02 – Quản lý và phân công tài xế**              | BP01 – Đặt xe và phân công tài xế      | SR09, SR10, SR11, SR12, SR13, SR14                         | UC07, UC08                         |
+| **BG03 – Quản lý chuyến đi và vận hành**            | BP02 – Thực hiện và theo dõi chuyến đi | SR16, SR17, SR18, SR19, SR20, SR21                         | UC09, UC10, UC11                   |
+| **BG03 – Quản lý chuyến đi và vận hành**            | BP05 – Quản lý và vận hành             | SR09, SR10, SR22, SR23, SR24, SR39, SR40, SR41, SR42, SR43 | UC17, UC18, UC19, UC20, UC21       |
+| **BG04 – Quản lý cước phí và thanh toán**           | BP03 – Thanh toán                      | SR25, SR26, SR27, SR28, SR29, SR30                         | UC12, UC13, UC14                   |
+| **BG05 – Quản lý thông báo**                        | BP06 – Quản lý thông báo               | SR31, SR32, SR33, SR34, SR35                               | UC16                               |
+| **BG06 – Đảm bảo tính ổn định và khả năng mở rộng** | Xuyên suốt hệ thống                    | NFR01–NFR08, NFR14–NFR20                                   | —                                  |
+| **BG07 – Đảm bảo an toàn và bảo mật**               | Xuyên suốt hệ thống                    | NFR09–NFR13, SR49, SR50, SR51                              | UC02, UC23, UC24                   |
+| **BG08 – Báo cáo và đánh giá hiệu quả kinh doanh**  | BP07 – Báo cáo và đánh giá hiệu quả    | SR44, SR45, SR46, SR47, SR48                               | UC22                               |
+| **BG09 – Hỗ trợ mở rộng trong tương lai**           | Xuyên suốt hệ thống                    | NFR14–NFR20                                                | —                                  |
+
+---
+
+## 14.2. Ma trận truy vết System Requirement – Acceptance Criteria
+
+| System Requirement | Acceptance Criteria                  |
+| ------------------ | ------------------------------------ |
+| **SR01**           | AC01                                 |
+| **SR02**           | AC02                                 |
+| **SR03**           | AC03                                 |
+| **SR04**           | AC04, AC04.1, AC04.2, AC04.3, AC04.4 |
+| **SR05**           | AC05                                 |
+| **SR06**           | AC06                                 |
+| **SR07**           | AC07                                 |
+| **SR08**           | AC08                                 |
+| **SR09**           | AC09                                 |
+| **SR10**           | AC10                                 |
+| **SR11**           | AC11                                 |
+| **SR12**           | AC12, AC12.1, AC12.2, AC12.3, AC12.4 |
+| **SR13**           | AC13, AC13.1, AC13.2, AC13.3         |
+| **SR14**           | AC14                                 |
+| **SR15**           | AC15                                 |
+| **SR16**           | AC16, AC16.1, AC16.2, AC16.3, AC16.4 |
+| **SR17**           | AC17                                 |
+| **SR18**           | AC18                                 |
+| **SR19**           | AC19                                 |
+| **SR20**           | AC20                                 |
+| **SR21**           | AC21                                 |
+| **SR22**           | AC22                                 |
+| **SR23**           | AC23                                 |
+| **SR24**           | AC24                                 |
+| **SR25**           | AC25                                 |
+| **SR26**           | AC26                                 |
+| **SR27**           | AC27, AC27.1, AC27.2, AC27.3, AC27.4 |
+| **SR28**           | AC28                                 |
+| **SR29**           | AC29                                 |
+| **SR30**           | AC30                                 |
+| **SR31**           | AC31                                 |
+| **SR32**           | AC32                                 |
+| **SR33**           | AC33                                 |
+| **SR34**           | AC34                                 |
+| **SR35**           | AC35                                 |
+| **SR36**           | AC36, AC36.1, AC36.2, AC36.3         |
+| **SR37**           | AC37                                 |
+| **SR38**           | AC38                                 |
+| **SR39**           | AC39                                 |
+| **SR40**           | AC40                                 |
+| **SR41**           | AC41                                 |
+| **SR42**           | AC42                                 |
+| **SR43**           | AC43                                 |
+| **SR44**           | AC44                                 |
+| **SR45**           | AC45                                 |
+| **SR46**           | AC46                                 |
+| **SR47**           | AC47                                 |
+| **SR48**           | AC48                                 |
+| **SR49**           | AC49                                 |
+| **SR50**           | AC50                                 |
+| **SR51**           | AC51                                 |
+
+---
+
+## 14.3. Ma trận truy vết Use Case – System Requirement
+
+| Use Case                                   | System Requirement                       |
+| ------------------------------------------ | ---------------------------------------- |
+| **UC01 – Đăng ký tài khoản**               | SR01                                     |
+| **UC02 – Đăng nhập**                       | SR02, SR49                               |
+| **UC03 – Quản lý thông tin cá nhân**       | SR03                                     |
+| **UC04 – Đặt xe**                          | SR04, SR05, SR06, SR07, SR11, SR12, SR15 |
+| **UC05 – Hủy yêu cầu đặt xe**              | SR07                                     |
+| **UC06 – Xem lịch sử chuyến đi**           | SR08                                     |
+| **UC07 – Phân công tài xế**                | SR11, SR12, SR14                         |
+| **UC08 – Tiếp nhận yêu cầu chuyến**        | SR13                                     |
+| **UC09 – Theo dõi chuyến đi**              | SR17, SR18                               |
+| **UC10 – Thực hiện chuyến đi**             | SR19, SR20                               |
+| **UC11 – Xử lý trường hợp phát sinh**      | SR21                                     |
+| **UC12 – Tính cước chuyến đi**             | SR06, SR25                               |
+| **UC13 – Thanh toán**                      | SR26, SR27, SR28, SR30                   |
+| **UC14 – Xử lý thanh toán thất bại**       | SR29                                     |
+| **UC15 – Đánh giá chuyến đi**              | SR36, SR37, SR38                         |
+| **UC16 – Gửi thông báo**                   | SR31, SR32, SR33, SR34, SR35             |
+| **UC17 – Quản lý khách hàng**              | SR39                                     |
+| **UC18 – Quản lý tài xế**                  | SR09, SR10                               |
+| **UC19 – Quản lý phương tiện**             | SR22, SR23, SR24                         |
+| **UC20 – Theo dõi chuyến đang diễn ra**    | SR17, SR40, SR41                         |
+| **UC21 – Xử lý sự cố**                     | SR21, SR42                               |
+| **UC22 – Xem báo cáo**                     | SR44, SR45, SR46, SR47, SR48             |
+| **UC23 – Quản lý tài khoản và phân quyền** | SR43, SR49                               |
+| **UC24 – Xem nhật ký hoạt động**           | SR51                                     |
+
+---
+
+## 14.4. Ma trận truy vết Business Requirement – Acceptance Criteria
+
+| Business Requirement | Acceptance Criteria liên quan                                    |
+| -------------------- | ---------------------------------------------------------------- |
+| **BG01**             | AC01–AC08, AC15–AC20, AC36–AC38                                  |
+| **BG02**             | AC09–AC14, AC22–AC24                                             |
+| **BG03**             | AC15–AC24, AC39–AC43                                             |
+| **BG04**             | AC25–AC30                                                        |
+| **BG05**             | AC31–AC35                                                        |
+| **BG06**             | Các AC liên quan đến xử lý lỗi, tính ổn định và bảo toàn dữ liệu |
+| **BG07**             | AC02, AC09, AC39, AC43, AC49–AC51                                |
+| **BG08**             | AC44–AC48                                                        |
+| **BG09**             | Các NFR về khả năng mở rộng và bảo trì: NFR14–NFR20              |
+
+---
+
+## 14.5. Kiểm tra tính đầy đủ của truy vết
+
+Ma trận truy vết phải đảm bảo:
+
+* Mỗi **BG** có ít nhất một **BP** tương ứng.
+* Mỗi **BP** được phân rã thành một hoặc nhiều **SR**.
+* Mỗi **SR** quan trọng phải có ít nhất một **AC** để kiểm chứng.
+* Các **SR** liên quan đến chức năng người dùng phải được ánh xạ đến **Use Case**.
+* Các **AC** phải có thể chuyển thành **Test Case** ở giai đoạn kiểm thử.
+* Không có Business Requirement nào bị bỏ sót trong quá trình phân tích.
+* Không có System Requirement quan trọng nào không có tiêu chí nghiệm thu.
+
+### Chuỗi truy vết tổng thể
+
+```text
+Business Requirement (BG)
+          ↓
+Business Process (BP)
+          ↓
+System Requirement (SR)
+          ↓
+Use Case (UC)
+          ↓
+Acceptance Criteria (AC)
+          ↓
+Test Case (TC)
+```
+
+Chuỗi truy vết này giúp đảm bảo yêu cầu từ cấp độ nghiệp vụ được chuyển hóa đầy đủ thành chức năng hệ thống và có thể kiểm chứng bằng kiểm thử.
