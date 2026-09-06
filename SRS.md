@@ -319,10 +319,6 @@ Hệ thống phải cung cấp các báo cáo phục vụ quản lý và ra quy�
 
 Hệ thống phải có kiến trúc linh hoạt để có thể bổ sung loại hình dịch vụ, phương thức thanh toán, nhà cung cấp thông báo và các thành phần kỹ thuật mới mà không cần xây dựng lại toàn bộ hệ thống.
 
-Được. Dựa trên **BG01–BG09**, phần *Business Process Modeling* nên mô hình hóa các quy trình nghiệp vụ chính của hệ thống đặt xe, thay vì chỉ lặp lại Business Requirements.
-
-Bạn có thể dán nguyên phần dưới đây vào `SRS.md` trên GitHub. Mình dùng **Mermaid** vì GitHub hỗ trợ render trực tiếp sơ đồ.
-
 # 7. Business Process Modeling
 
 ## 7.1. Tổng quan quy trình nghiệp vụ
