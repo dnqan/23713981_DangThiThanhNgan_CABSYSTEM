@@ -287,190 +287,42 @@ Các chức năng được ưu tiên là những chức năng **cốt lõi để
 | 9   | **Report & Dashboard**                | BG-08                   | Báo cáo số lượng chuyến, doanh thu, tỷ lệ hoàn thành, tỷ lệ hủy và hiệu quả tài xế                          | **Should Have** |
 | 10  | **Security & Access Control**         | BG-07                   | Phân quyền quản trị, kiểm soát truy cập và lưu vết các thao tác quan trọng                                  | **Must Have**   |
 
-## 6. Business Requirements
+Đúng rồi. Ở **bước 6**, mình sẽ đặt tên Business Requirement theo dạng **BG01 – Tên Business Requirement**, bám sát các yêu cầu trong tài liệu CAB System. 
 
-Business Requirements được xây dựng dựa trên các Business Goals đã xác định ở bước trước. Mỗi Business Goal được cụ thể hóa thành các yêu cầu mà hệ thống CAB cần đáp ứng để đạt được mục tiêu kinh doanh.
+# 6. Business Requirements
 
----
+### BG01 – Quản lý và đặt xe
 
-### BG01 – Nâng cao chất lượng dịch vụ đặt xe
+Hệ thống phải hỗ trợ khách hàng quản lý tài khoản, tạo yêu cầu đặt xe, theo dõi chuyến đi, xem lịch sử chuyến đi và đánh giá tài xế.
 
-**BR01.1 – Quản lý tài khoản khách hàng**
-Hệ thống phải cho phép khách hàng đăng ký tài khoản, đăng nhập và cập nhật thông tin cá nhân.
+### BG02 – Quản lý và phân công tài xế
 
-**BR01.2 – Tạo yêu cầu đặt xe**
-Hệ thống phải cho phép khách hàng nhập điểm đón, điểm đến, lựa chọn loại xe và gửi yêu cầu đặt xe.
+Hệ thống phải hỗ trợ quản lý thông tin, trạng thái hoạt động của tài xế và tự động tìm kiếm, phân công tài xế phù hợp cho từng yêu cầu đặt xe.
 
-**BR01.3 – Theo dõi trạng thái chuyến đi**
-Hệ thống phải cho phép khách hàng theo dõi trạng thái yêu cầu và chuyến đi, bao gồm trạng thái tìm tài xế, tài xế nhận chuyến, thời gian dự kiến tài xế đến và trạng thái hiện tại của chuyến.
+### BG03 – Quản lý chuyến đi và vận hành
 
-**BR01.4 – Xem lịch sử và đánh giá chuyến đi**
-Hệ thống phải cho phép khách hàng xem lịch sử chuyến đi, số tiền phải trả và đánh giá tài xế sau khi chuyến hoàn thành.
+Hệ thống phải hỗ trợ nhân viên vận hành quản lý khách hàng, tài xế, phương tiện và chuyến đi; đồng thời theo dõi các chuyến đang diễn ra và xử lý các trường hợp phát sinh.
 
-Các yêu cầu trên được xác định từ nhu cầu trực tiếp của khách hàng trong tài liệu.
+### BG04 – Quản lý cước phí và thanh toán
 
----
+Hệ thống phải hỗ trợ tính cước chuyến đi, thanh toán bằng tiền mặt hoặc phương thức điện tử, tích hợp với nhà cung cấp thanh toán bên ngoài và xử lý trường hợp thanh toán thất bại.
 
-### BG02 – Nâng cao hiệu quả phân công tài xế
+### BG05 – Quản lý thông báo
 
-**BR02.1 – Quản lý thông tin tài xế**
-Hệ thống phải cho phép tài xế đăng ký hoặc được nhân viên vận hành tạo tài khoản, cập nhật hồ sơ và thông tin phương tiện.
+Hệ thống phải cung cấp thông báo cho khách hàng và tài xế về các sự kiện liên quan đến quá trình đặt xe, phân công tài xế, chuyến đi và thanh toán.
 
-**BR02.2 – Quản lý trạng thái tài xế**
-Hệ thống phải cho phép tài xế cập nhật trạng thái hoạt động và chuyển sang trạng thái sẵn sàng nhận chuyến.
+### BG06 – Đảm bảo tính ổn định và khả năng mở rộng
 
-**BR02.3 – Tìm kiếm tài xế phù hợp**
-Hệ thống phải xác định các tài xế phù hợp dựa trên vị trí, trạng thái sẵn sàng và các tiêu chí vận hành được doanh nghiệp xác định.
+Hệ thống phải hoạt động ổn định trong thời gian cao điểm, hạn chế ảnh hưởng khi một thành phần gặp lỗi và cho phép các thành phần được mở rộng hoặc triển khai độc lập.
 
-**BR02.4 – Xử lý trường hợp tài xế từ chối hoặc không phản hồi**
-Nếu tài xế được đề xuất không phản hồi hoặc từ chối chuyến, hệ thống phải tiếp tục tìm tài xế khác mà không yêu cầu khách hàng tạo lại yêu cầu.
+### BG07 – Đảm bảo an toàn và bảo mật
 
-**BR02.5 – Thông báo khi không tìm được tài xế**
-Nếu hệ thống không tìm được tài xế phù hợp, hệ thống phải thông báo rõ ràng cho khách hàng.
+Hệ thống phải xác thực người dùng, kiểm soát quyền truy cập quản trị, bảo vệ dữ liệu cá nhân, thông tin phương tiện, vị trí và giao dịch, đồng thời lưu vết các thao tác quan trọng.
 
-Các yêu cầu này bám sát phần yêu cầu về tìm và phân công tài xế trong tài liệu.
+### BG08 – Báo cáo và đánh giá hiệu quả kinh doanh
 
----
+Hệ thống phải cung cấp các báo cáo phục vụ quản lý và ra quyết định, bao gồm số lượng chuyến, doanh thu, tỷ lệ hoàn thành, tỷ lệ hủy và hiệu quả hoạt động của tài xế.
 
-### BG03 – Nâng cao hiệu quả quản lý và vận hành
+### BG09 – Hỗ trợ mở rộng trong tương lai
 
-**BR03.1 – Quản lý khách hàng, tài xế và phương tiện**
-Hệ thống phải cung cấp giao diện quản trị để nhân viên vận hành quản lý khách hàng, tài xế và phương tiện.
-
-**BR03.2 – Quản lý chuyến đi**
-Hệ thống phải cho phép nhân viên vận hành theo dõi và quản lý thông tin các chuyến đi.
-
-**BR03.3 – Theo dõi chuyến đang diễn ra**
-Hệ thống phải cho phép nhân viên vận hành xem các chuyến đang diễn ra và kiểm tra trạng thái tài xế.
-
-**BR03.4 – Hỗ trợ xử lý chuyến bị lỗi**
-Hệ thống phải hỗ trợ nhân viên vận hành xử lý các trường hợp chuyến đi bị lỗi.
-
-**BR03.5 – Tra cứu lịch sử giao dịch**
-Hệ thống phải cho phép nhân viên vận hành tra cứu lịch sử giao dịch.
-
-Các yêu cầu này xuất phát từ nhóm yêu cầu quản trị và vận hành của doanh nghiệp.
-
----
-
-### BG04 – Quản lý doanh thu và thanh toán hiệu quả
-
-**BR04.1 – Tính cước chuyến đi**
-Hệ thống phải xác định số tiền khách hàng phải trả sau khi chuyến đi hoàn thành dựa trên loại dịch vụ và thông tin chuyến đi.
-
-**BR04.2 – Hỗ trợ nhiều phương thức thanh toán**
-Hệ thống phải hỗ trợ thanh toán bằng tiền mặt và phương thức thanh toán điện tử.
-
-**BR04.3 – Tích hợp nhà cung cấp thanh toán**
-Hệ thống phải có khả năng tích hợp với nhà cung cấp thanh toán bên ngoài.
-
-**BR04.4 – Bảo vệ thông tin thanh toán nhạy cảm**
-Hệ thống CAB không được lưu trực tiếp thông tin nhạy cảm của thẻ hoặc tài khoản thanh toán.
-
-**BR04.5 – Xử lý thanh toán thất bại**
-Khi giao dịch thanh toán điện tử thất bại, hệ thống phải thông báo cho khách hàng và hỗ trợ xử lý lại theo chính sách của doanh nghiệp.
-
-Các yêu cầu này được nêu trong phần thanh toán và tính cước của tài liệu.
-
----
-
-### BG05 – Cải thiện khả năng theo dõi và giao tiếp
-
-**BR05.1 – Thông báo cho khách hàng**
-Hệ thống phải thông báo cho khách hàng khi yêu cầu đặt xe được tiếp nhận, có tài xế nhận chuyến, tài xế đến điểm đón, chuyến hoàn thành và thanh toán có kết quả.
-
-**BR05.2 – Thông báo cho tài xế**
-Hệ thống phải thông báo cho tài xế về chuyến mới hoặc những thay đổi liên quan đến chuyến đang thực hiện.
-
-**BR05.3 – Hỗ trợ mở rộng kênh thông báo**
-Hệ thống phải được thiết kế để có thể bổ sung thêm các kênh thông báo trong tương lai mà không phải thay đổi toàn bộ hệ thống.
-
-Các yêu cầu trên bám sát nội dung về Notification trong tài liệu.
-
----
-
-### BG06 – Đảm bảo hệ thống hoạt động ổn định và có khả năng mở rộng
-
-**BR06.1 – Đảm bảo hoạt động khi tải cao**
-Hệ thống phải hoạt động ổn định trong các thời điểm nhu cầu sử dụng tăng cao.
-
-**BR06.2 – Hạn chế ảnh hưởng khi một thành phần gặp lỗi**
-Lỗi xảy ra tại chức năng thanh toán hoặc thông báo không được làm cho toàn bộ hệ thống đặt xe ngừng hoạt động.
-
-**BR06.3 – Hỗ trợ mở rộng độc lập**
-Các thành phần của hệ thống phải có khả năng mở rộng độc lập khi tải tăng.
-
-**BR06.4 – Hỗ trợ triển khai từng phần**
-Các chức năng mới phải có khả năng được triển khai từng phần và hạn chế ảnh hưởng đến các chức năng đang hoạt động.
-
-Các yêu cầu này được xác định trực tiếp trong phần yêu cầu về tính ổn định và khả năng mở rộng.
-
----
-
-### BG07 – Đảm bảo an toàn và bảo mật dữ liệu
-
-**BR07.1 – Xác thực người dùng**
-Hệ thống phải yêu cầu khách hàng và tài xế xác thực trước khi sử dụng các chức năng yêu cầu tài khoản.
-
-**BR07.2 – Kiểm soát quyền truy cập quản trị**
-Hệ thống phải kiểm soát quyền truy cập đối với các thao tác quản trị.
-
-**BR07.3 – Bảo vệ dữ liệu**
-Hệ thống phải bảo vệ thông tin cá nhân, thông tin phương tiện, dữ liệu vị trí và dữ liệu giao dịch.
-
-**BR07.4 – Lưu vết thao tác quan trọng**
-Hệ thống phải lưu vết các thao tác quan trọng để phục vụ kiểm tra khi xảy ra sự cố.
-
-Các yêu cầu này bám sát phần Security trong tài liệu.
-
----
-
-### BG08 – Hỗ trợ ra quyết định và đánh giá hiệu quả kinh doanh
-
-**BR08.1 – Báo cáo số lượng chuyến**
-Hệ thống phải cung cấp dữ liệu/báo cáo về số lượng chuyến.
-
-**BR08.2 – Báo cáo doanh thu**
-Hệ thống phải cung cấp dữ liệu/báo cáo về doanh thu.
-
-**BR08.3 – Báo cáo tỷ lệ hoàn thành và hủy chuyến**
-Hệ thống phải cung cấp dữ liệu về tỷ lệ chuyến hoàn thành và tỷ lệ hủy.
-
-**BR08.4 – Báo cáo hiệu quả tài xế**
-Hệ thống phải cung cấp dữ liệu phục vụ đánh giá hiệu quả hoạt động của tài xế.
-
-Các yêu cầu này dựa trực tiếp trên kỳ vọng của ban lãnh đạo về báo cáo.
-
----
-
-### BG09 – Tạo nền tảng linh hoạt cho phát triển trong tương lai
-
-**BR09.1 – Hỗ trợ bổ sung dịch vụ mới**
-Hệ thống phải có kiến trúc cho phép bổ sung các loại dịch vụ mới trong tương lai.
-
-**BR09.2 – Hỗ trợ bổ sung phương thức thanh toán**
-Hệ thống phải có khả năng mở rộng để tích hợp thêm các phương thức thanh toán.
-
-**BR09.3 – Hỗ trợ bổ sung nhà cung cấp thông báo**
-Hệ thống phải cho phép tích hợp thêm nhà cung cấp dịch vụ thông báo.
-
-**BR09.4 – Hỗ trợ thay đổi thành phần kỹ thuật**
-Kiến trúc hệ thống phải đủ linh hoạt để có thể thay đổi một số thành phần kỹ thuật mà không phải xây dựng lại toàn bộ ứng dụng.
-
-Các yêu cầu này phù hợp với định hướng phát triển lâu dài của nền tảng CAB.
-
----
-
-## 6.1. Business Requirements Summary
-
-| Business Goal | Business Requirement | Nội dung chính                                                  |
-| ------------- | -------------------- | --------------------------------------------------------------- |
-| **BG01**      | BR01.1 – BR01.4      | Quản lý tài khoản, đặt xe, theo dõi chuyến, lịch sử và đánh giá |
-| **BG02**      | BR02.1 – BR02.5      | Quản lý tài xế và tự động tìm, phân công tài xế                 |
-| **BG03**      | BR03.1 – BR03.5      | Quản lý và vận hành khách hàng, tài xế, phương tiện, chuyến đi  |
-| **BG04**      | BR04.1 – BR04.5      | Tính cước, thanh toán và tích hợp thanh toán                    |
-| **BG05**      | BR05.1 – BR05.3      | Thông báo và mở rộng kênh thông báo                             |
-| **BG06**      | BR06.1 – BR06.4      | Ổn định, chịu tải, mở rộng và triển khai từng phần              |
-| **BG07**      | BR07.1 – BR07.4      | Xác thực, phân quyền, bảo vệ dữ liệu và audit                   |
-| **BG08**      | BR08.1 – BR08.4      | Báo cáo và đánh giá hiệu quả kinh doanh                         |
-| **BG09**      | BR09.1 – BR09.4      | Khả năng mở rộng dịch vụ, thanh toán, thông báo và kỹ thuật     |
+Hệ thống phải có kiến trúc linh hoạt để có thể bổ sung loại hình dịch vụ, phương thức thanh toán, nhà cung cấp thông báo và các thành phần kỹ thuật mới mà không cần xây dựng lại toàn bộ hệ thống.
