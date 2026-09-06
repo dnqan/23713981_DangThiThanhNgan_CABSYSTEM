@@ -229,23 +229,6 @@ Ban lãnh đạo được kỳ vọng có báo cáo về các chỉ số hoạt 
 
 ---
 
-### BG-09 – Tạo nền tảng linh hoạt cho phát triển trong tương lai
-
-**Business Goal:**
-Xây dựng nền tảng CAB có khả năng thích ứng với các nhu cầu kinh doanh mới mà không phải xây dựng lại toàn bộ hệ thống.
-
-**Mục tiêu:**
-
-* Có thể bổ sung các loại dịch vụ mới.
-* Có thể thêm các phương thức thanh toán mới.
-* Có thể tích hợp thêm các nhà cung cấp dịch vụ thông báo.
-* Có thể thay đổi một số thành phần kỹ thuật khi cần.
-* Hỗ trợ doanh nghiệp phát triển hệ thống trong dài hạn.
-
-Mục tiêu này phù hợp với kỳ vọng của doanh nghiệp về một nền tảng CAB có thể phát triển lâu dài và linh hoạt mở rộng.
-
----
-
 ## 4.1. Business Goals Summary
 
 | ID    | Business Goal                             | Mục đích chính                           |
@@ -694,4 +677,142 @@ flowchart TD
 | **BG06 – Đảm bảo tính ổn định và khả năng mở rộng** | Áp dụng xuyên suốt các quy trình nghiệp vụ                                                          |
 | **BG07 – Đảm bảo an toàn và bảo mật**               | Quy trình đăng nhập, xác thực, phân quyền và lưu vết trong các quy trình                            |
 | **BG08 – Báo cáo và đánh giá hiệu quả kinh doanh**  | Quy trình báo cáo và đánh giá hiệu quả kinh doanh                                                   |
-| **BG09 – Hỗ trợ mở rộng trong tương lai**           | Áp dụng xuyên suốt kiến trúc và các quy trình nghiệp vụ                                             |
+                                            |
+
+# 8. Business Functions
+
+Các chức năng nghiệp vụ được phân rã từ các quy trình nghiệp vụ tại mục 7. Mỗi chức năng nghiệp vụ thể hiện một khả năng mà hệ thống phải cung cấp để hỗ trợ thực hiện nghiệp vụ.
+
+## 8.1. Nhóm chức năng quản lý tài khoản và đặt xe
+
+| Mã SR    | Chức năng nghiệp vụ       | Mô tả                                                                              |
+| -------- | ------------------------- | ---------------------------------------------------------------------------------- |
+| **SR01** | Đăng ký tài khoản         | Cho phép khách hàng tạo tài khoản để sử dụng dịch vụ.                              |
+| **SR02** | Đăng nhập và xác thực     | Cho phép khách hàng, tài xế và nhân viên vận hành đăng nhập và xác thực danh tính. |
+| **SR03** | Quản lý thông tin cá nhân | Cho phép người dùng xem và cập nhật thông tin tài khoản cá nhân.                   |
+| **SR04** | Tạo yêu cầu đặt xe        | Cho phép khách hàng nhập thông tin và tạo yêu cầu đặt xe.                          |
+| **SR05** | Kiểm tra yêu cầu đặt xe   | Cho phép hệ thống kiểm tra tính hợp lệ của thông tin đặt xe.                       |
+| **SR06** | Tính cước dự kiến         | Cho phép hệ thống tính và hiển thị cước phí dự kiến cho chuyến đi.                 |
+| **SR07** | Hủy yêu cầu đặt xe        | Cho phép khách hàng hủy yêu cầu đặt xe theo điều kiện nghiệp vụ.                   |
+| **SR08** | Xem lịch sử chuyến đi     | Cho phép khách hàng xem các chuyến đi đã thực hiện.                                |
+
+---
+
+## 8.2. Nhóm chức năng quản lý và phân công tài xế
+
+| Mã SR    | Chức năng nghiệp vụ       | Mô tả                                                                                                          |
+| -------- | ------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| **SR09** | Quản lý thông tin tài xế  | Cho phép nhân viên vận hành quản lý thông tin tài xế.                                                          |
+| **SR10** | Quản lý trạng thái tài xế | Cho phép hệ thống cập nhật và theo dõi trạng thái hoạt động của tài xế.                                        |
+| **SR11** | Xác định tài xế phù hợp   | Cho phép hệ thống tìm kiếm tài xế phù hợp với yêu cầu đặt xe.                                                  |
+| **SR12** | Phân công tài xế          | Cho phép hệ thống gửi và phân công yêu cầu chuyến đi cho tài xế phù hợp.                                       |
+| **SR13** | Tiếp nhận yêu cầu chuyến  | Cho phép tài xế xem và chấp nhận hoặc từ chối yêu cầu nhận chuyến.                                             |
+| **SR14** | Phân công lại tài xế      | Cho phép hệ thống tiếp tục tìm kiếm và phân công tài xế khác khi tài xế được chọn từ chối hoặc không phản hồi. |
+
+---
+
+## 8.3. Nhóm chức năng quản lý và theo dõi chuyến đi
+
+| Mã SR    | Chức năng nghiệp vụ                 | Mô tả                                                                                            |
+| -------- | ----------------------------------- | ------------------------------------------------------------------------------------------------ |
+| **SR15** | Xác nhận chuyến đi                  | Cho phép hệ thống xác nhận chuyến sau khi tài xế nhận yêu cầu.                                   |
+| **SR16** | Cập nhật trạng thái chuyến đi       | Cho phép hệ thống cập nhật trạng thái của chuyến theo từng giai đoạn.                            |
+| **SR17** | Theo dõi chuyến đi                  | Cho phép khách hàng và nhân viên vận hành theo dõi trạng thái chuyến đi.                         |
+| **SR18** | Cập nhật thông tin vị trí chuyến đi | Cho phép hệ thống cập nhật thông tin vị trí của tài xế trong quá trình thực hiện chuyến.         |
+| **SR19** | Bắt đầu chuyến đi                   | Cho phép tài xế xác nhận bắt đầu thực hiện chuyến.                                               |
+| **SR20** | Kết thúc chuyến đi                  | Cho phép tài xế xác nhận hoàn thành chuyến khi đến điểm đến.                                     |
+| **SR21** | Quản lý trường hợp phát sinh        | Cho phép tài xế, khách hàng hoặc nhân viên vận hành ghi nhận và xử lý các sự cố trong chuyến đi. |
+
+---
+
+## 8.4. Nhóm chức năng quản lý phương tiện
+
+| Mã SR    | Chức năng nghiệp vụ            | Mô tả                                                                           |
+| -------- | ------------------------------ | ------------------------------------------------------------------------------- |
+| **SR22** | Quản lý thông tin phương tiện  | Cho phép nhân viên vận hành quản lý thông tin các phương tiện tham gia dịch vụ. |
+| **SR23** | Quản lý trạng thái phương tiện | Cho phép theo dõi và cập nhật trạng thái hoạt động của phương tiện.             |
+| **SR24** | Gán phương tiện cho tài xế     | Cho phép quản lý mối quan hệ giữa tài xế và phương tiện được sử dụng.           |
+
+---
+
+## 8.5. Nhóm chức năng quản lý cước phí và thanh toán
+
+| Mã SR    | Chức năng nghiệp vụ       | Mô tả                                                                                                |
+| -------- | ------------------------- | ---------------------------------------------------------------------------------------------------- |
+| **SR25** | Tính cước cuối chuyến     | Cho phép hệ thống xác định cước phí cuối cùng dựa trên thông tin thực tế của chuyến đi.              |
+| **SR26** | Thanh toán tiền mặt       | Cho phép khách hàng thanh toán trực tiếp bằng tiền mặt và tài xế xác nhận thanh toán.                |
+| **SR27** | Thanh toán điện tử        | Cho phép khách hàng thực hiện thanh toán thông qua nhà cung cấp dịch vụ thanh toán bên ngoài.        |
+| **SR28** | Xử lý kết quả thanh toán  | Cho phép hệ thống tiếp nhận và cập nhật trạng thái giao dịch thanh toán.                             |
+| **SR29** | Xử lý thanh toán thất bại | Cho phép hệ thống thông báo và hỗ trợ khách hàng thực hiện lại hoặc thay đổi phương thức thanh toán. |
+| **SR30** | Xem thông tin thanh toán  | Cho phép người dùng xem thông tin và trạng thái thanh toán của chuyến đi.                            |
+
+---
+
+## 8.6. Nhóm chức năng thông báo
+
+| Mã SR    | Chức năng nghiệp vụ             | Mô tả                                                                               |
+| -------- | ------------------------------- | ----------------------------------------------------------------------------------- |
+| **SR31** | Gửi thông báo đặt xe            | Cho phép hệ thống thông báo kết quả tạo yêu cầu đặt xe cho khách hàng.              |
+| **SR32** | Gửi thông báo phân công tài xế  | Cho phép hệ thống thông báo thông tin phân công chuyến cho khách hàng và tài xế.    |
+| **SR33** | Gửi thông báo trạng thái chuyến | Cho phép hệ thống thông báo các thay đổi quan trọng của chuyến đi.                  |
+| **SR34** | Gửi thông báo thanh toán        | Cho phép hệ thống thông báo kết quả thanh toán cho khách hàng và các bên liên quan. |
+| **SR35** | Quản lý trạng thái thông báo    | Cho phép hệ thống ghi nhận trạng thái gửi và xử lý trường hợp thông báo thất bại.   |
+
+---
+
+## 8.7. Nhóm chức năng đánh giá
+
+| Mã SR    | Chức năng nghiệp vụ     | Mô tả                                                                 |
+| -------- | ----------------------- | --------------------------------------------------------------------- |
+| **SR36** | Đánh giá chuyến đi      | Cho phép khách hàng đánh giá chất lượng chuyến đi sau khi hoàn thành. |
+| **SR37** | Đánh giá tài xế         | Cho phép khách hàng đánh giá tài xế dựa trên trải nghiệm chuyến đi.   |
+| **SR38** | Quản lý đánh giá tài xế | Cho phép hệ thống lưu trữ và tổng hợp dữ liệu đánh giá của tài xế.    |
+
+---
+
+## 8.8. Nhóm chức năng quản lý và vận hành
+
+| Mã SR    | Chức năng nghiệp vụ          | Mô tả                                                                                         |
+| -------- | ---------------------------- | --------------------------------------------------------------------------------------------- |
+| **SR39** | Quản lý khách hàng           | Cho phép nhân viên vận hành xem và quản lý thông tin khách hàng.                              |
+| **SR40** | Theo dõi hoạt động tài xế    | Cho phép nhân viên vận hành theo dõi trạng thái và hoạt động của tài xế.                      |
+| **SR41** | Theo dõi chuyến đang diễn ra | Cho phép nhân viên vận hành theo dõi các chuyến đi đang thực hiện.                            |
+| **SR42** | Xử lý trường hợp phát sinh   | Cho phép nhân viên vận hành tiếp nhận và xử lý các vấn đề phát sinh trong quá trình vận hành. |
+| **SR43** | Quản lý tài khoản nhân viên  | Cho phép quản lý hệ thống quản lý tài khoản và quyền của nhân viên vận hành.                  |
+
+---
+
+## 8.9. Nhóm chức năng báo cáo và đánh giá hiệu quả
+
+| Mã SR    | Chức năng nghiệp vụ             | Mô tả                                                                                      |
+| -------- | ------------------------------- | ------------------------------------------------------------------------------------------ |
+| **SR44** | Báo cáo số lượng chuyến         | Cho phép nhân viên quản lý xem số lượng chuyến theo khoảng thời gian và tiêu chí lựa chọn. |
+| **SR45** | Báo cáo doanh thu               | Cho phép nhân viên quản lý theo dõi doanh thu từ các chuyến đi.                            |
+| **SR46** | Báo cáo tỷ lệ hoàn thành chuyến | Cho phép hệ thống tính toán và cung cấp tỷ lệ chuyến hoàn thành.                           |
+| **SR47** | Báo cáo tỷ lệ hủy chuyến        | Cho phép hệ thống tính toán và cung cấp tỷ lệ hủy chuyến.                                  |
+| **SR48** | Báo cáo hiệu quả tài xế         | Cho phép quản lý đánh giá hiệu quả hoạt động của tài xế dựa trên các chỉ số liên quan.     |
+
+---
+
+## 8.10. Nhóm chức năng an toàn và bảo mật
+
+| Mã SR    | Chức năng nghiệp vụ        | Mô tả                                                                          |
+| -------- | -------------------------- | ------------------------------------------------------------------------------ |
+| **SR49** | Phân quyền người dùng      | Cho phép hệ thống kiểm soát quyền truy cập dựa trên vai trò của người dùng.    |
+| **SR50** | Bảo vệ dữ liệu             | Cho phép hệ thống bảo vệ thông tin cá nhân, phương tiện, vị trí và giao dịch.  |
+| **SR51** | Ghi nhận nhật ký hoạt động | Cho phép hệ thống lưu vết các thao tác quan trọng của người dùng và nhân viên. |
+
+---
+
+## 8.11. Ma trận truy xuất Business Process – System Requirement
+
+| Business Process                                   | Các System Requirements                                                            |
+| -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| **BP01 – Đặt xe và phân công tài xế**              | SR01, SR02, SR03, SR04, SR05, SR06, SR07, SR09, SR10, SR11, SR12, SR13, SR14, SR15 |
+| **BP02 – Thực hiện và theo dõi chuyến đi**         | SR16, SR17, SR18, SR19, SR20, SR21, SR31, SR32, SR33                               |
+| **BP03 – Thanh toán**                              | SR25, SR26, SR27, SR28, SR29, SR30, SR34                                           |
+| **BP04 – Đánh giá chuyến đi và tài xế**            | SR36, SR37, SR38                                                                   |
+| **BP05 – Quản lý và vận hành**                     | SR09, SR10, SR22, SR23, SR24, SR39, SR40, SR41, SR42, SR43                         |
+| **BP06 – Quản lý thông báo**                       | SR31, SR32, SR33, SR34, SR35                                                       |
+| **BP07 – Báo cáo và đánh giá hiệu quả kinh doanh** | SR44, SR45, SR46, SR47, SR48                                                       |
+| **Xuyên suốt hệ thống – An toàn và bảo mật**       | SR02, SR43, SR49, SR50, SR51                                                       |
