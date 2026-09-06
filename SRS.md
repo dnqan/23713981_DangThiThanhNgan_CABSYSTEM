@@ -319,93 +319,383 @@ Hệ thống phải cung cấp các báo cáo phục vụ quản lý và ra quy�
 
 Hệ thống phải có kiến trúc linh hoạt để có thể bổ sung loại hình dịch vụ, phương thức thanh toán, nhà cung cấp thông báo và các thành phần kỹ thuật mới mà không cần xây dựng lại toàn bộ hệ thống.
 
-Được. Dựa trực tiếp vào **BG01–BG09**, phần 7 nên vẽ **sơ đồ mô hình hóa nghiệp vụ (Business Use Case Model)**, trong đó các **Business Requirements** được chuyển thành các nhóm nghiệp vụ chính và thể hiện các tác nhân bên ngoài tương tác với hệ thống.
+Được. Dựa trên **BG01–BG09**, phần *Business Process Modeling* nên mô hình hóa các quy trình nghiệp vụ chính của hệ thống đặt xe, thay vì chỉ lặp lại Business Requirements.
 
-Mình đề xuất sơ đồ dưới đây vì nó **bám sát đủ 9 Business Requirements**, nhưng không biến các yêu cầu phi chức năng như BG06, BG07, BG09 thành use case một cách máy móc.
+Bạn có thể dán nguyên phần dưới đây vào `SRS.md` trên GitHub. Mình dùng **Mermaid** vì GitHub hỗ trợ render trực tiếp sơ đồ.
 
-### 7. Sơ đồ mô hình hóa nghiệp vụ
+# 7. Business Process Modeling
 
+## 7.1. Tổng quan quy trình nghiệp vụ
+
+Hệ thống quản lý và đặt xe bao gồm các quy trình nghiệp vụ chính từ khi khách hàng tạo yêu cầu đặt xe, hệ thống tìm kiếm và phân công tài xế, thực hiện chuyến đi, thanh toán cho đến khi hoàn tất chuyến và đánh giá tài xế.
+
+Các quy trình chính gồm:
+
+1. Đặt xe và phân công tài xế.
+2. Thực hiện và theo dõi chuyến đi.
+3. Thanh toán và xử lý thanh toán thất bại.
+4. Đánh giá chuyến đi và tài xế.
+5. Quản lý và vận hành tài xế, phương tiện và chuyến đi.
+6. Quản lý thông báo.
+7. Báo cáo và đánh giá hiệu quả kinh doanh.
+
+---
+
+## 7.2. Quy trình đặt xe và phân công tài xế
+
+### 7.2.1. Mục tiêu
+
+Quy trình cho phép khách hàng tạo yêu cầu đặt xe và hệ thống tự động tìm kiếm, phân công tài xế phù hợp.
+
+### 7.2.2. Tác nhân tham gia
+
+* **Khách hàng**
+* **Hệ thống**
+* **Tài xế**
+* **Nhân viên vận hành**
+
+### 7.2.3. Quy trình
+
+1. Khách hàng đăng nhập vào hệ thống.
+2. Khách hàng nhập thông tin chuyến đi gồm điểm đón, điểm đến và các thông tin cần thiết.
+3. Hệ thống kiểm tra tính hợp lệ của yêu cầu.
+4. Nếu thông tin không hợp lệ, hệ thống yêu cầu khách hàng điều chỉnh.
+5. Nếu thông tin hợp lệ, hệ thống tạo yêu cầu đặt xe.
+6. Hệ thống tính cước dự kiến cho chuyến đi.
+7. Hệ thống tìm kiếm các tài xế phù hợp dựa trên trạng thái hoạt động, vị trí và khả năng đáp ứng.
+8. Hệ thống gửi yêu cầu nhận chuyến đến tài xế phù hợp.
+9. Tài xế chấp nhận hoặc từ chối yêu cầu.
+10. Nếu tài xế từ chối hoặc không phản hồi, hệ thống tiếp tục tìm kiếm tài xế khác.
+11. Nếu có tài xế nhận chuyến, hệ thống xác nhận chuyến đi.
+12. Hệ thống gửi thông báo cho khách hàng và tài xế.
+13. Quy trình kết thúc.
+
+### 7.2.4. Sơ đồ quy trình
 
 ```mermaid
-flowchart LR
+flowchart TD
+    A([Bắt đầu]) --> B[Khách hàng đăng nhập]
+    B --> C[Nhập thông tin đặt xe]
+    C --> D{Thông tin hợp lệ?}
 
-    %% =========================
-    %% ACTORS
-    %% =========================
-    KH["👤 Khách hàng"]
-    TX["🚗 Tài xế"]
-    NV["👨‍💼 Nhân viên vận hành"]
-    QL["📊 Quản lý"]
-    PAY["💳 Nhà cung cấp thanh toán"]
-    NOTI["🔔 Nhà cung cấp thông báo"]
+    D -- Không --> E[Thông báo lỗi]
+    E --> C
 
-    %% =========================
-    %% SYSTEM BOUNDARY
-    %% =========================
-    subgraph HT["HỆ THỐNG QUẢN LÝ ĐẶT XE"]
+    D -- Có --> F[Tạo yêu cầu đặt xe]
+    F --> G[Tính cước dự kiến]
+    G --> H[Tìm kiếm tài xế phù hợp]
+    H --> I[Gửi yêu cầu nhận chuyến]
 
-        BG01["BG01<br/>Quản lý và đặt xe"]
-        BG02["BG02<br/>Quản lý và phân công tài xế"]
-        BG03["BG03<br/>Quản lý chuyến đi và vận hành"]
-        BG04["BG04<br/>Quản lý cước phí và thanh toán"]
-        BG05["BG05<br/>Quản lý thông báo"]
-        BG06["BG06<br/>Đảm bảo tính ổn định<br/>và khả năng mở rộng"]
-        BG07["BG07<br/>Đảm bảo an toàn<br/>và bảo mật"]
-        BG08["BG08<br/>Báo cáo và đánh giá<br/>hiệu quả kinh doanh"]
-        BG09["BG09<br/>Hỗ trợ mở rộng<br/>trong tương lai"]
+    I --> J{Tài xế chấp nhận?}
 
-    end
+    J -- Không --> K{Còn tài xế phù hợp?}
+    K -- Có --> H
+    K -- Không --> L[Thông báo không tìm được tài xế]
+    L --> M([Kết thúc])
 
-    %% =========================
-    %% ACTOR - BUSINESS REQUIREMENTS
-    %% =========================
-
-    KH --> BG01
-    KH --> BG04
-    KH --> BG05
-    KH --> BG07
-
-    TX --> BG02
-    TX --> BG03
-    TX --> BG05
-    TX --> BG07
-
-    NV --> BG02
-    NV --> BG03
-    NV --> BG04
-    NV --> BG05
-    NV --> BG07
-
-    QL --> BG03
-    QL --> BG08
-    QL --> BG07
-
-    PAY --> BG04
-    NOTI --> BG05
-
-    %% =========================
-    %% BUSINESS RELATIONSHIPS
-    %% =========================
-
-    BG01 --> BG02
-    BG02 --> BG03
-    BG03 --> BG04
-    BG04 --> BG05
-
-    BG06 -.-> BG01
-    BG06 -.-> BG02
-    BG06 -.-> BG03
-    BG06 -.-> BG04
-    BG06 -.-> BG05
-
-    BG07 -.-> BG01
-    BG07 -.-> BG02
-    BG07 -.-> BG03
-    BG07 -.-> BG04
-    BG07 -.-> BG05
-    BG07 -.-> BG08
-
-    BG09 -.-> BG01
-    BG09 -.-> BG04
-    BG09 -.-> BG05
+    J -- Có --> N[Xác nhận chuyến đi]
+    N --> O[Gửi thông báo cho khách hàng và tài xế]
+    O --> M([Kết thúc])
 ```
+
+---
+
+## 7.3. Quy trình thực hiện và theo dõi chuyến đi
+
+### 7.3.1. Mục tiêu
+
+Quy trình quản lý chuyến đi từ khi tài xế được phân công đến khi chuyến đi hoàn tất hoặc phát sinh vấn đề cần xử lý.
+
+### 7.3.2. Tác nhân tham gia
+
+* **Khách hàng**
+* **Tài xế**
+* **Hệ thống**
+* **Nhân viên vận hành**
+
+### 7.3.3. Quy trình
+
+1. Sau khi chuyến đi được xác nhận, tài xế nhận thông tin chuyến.
+2. Tài xế di chuyển đến điểm đón.
+3. Hệ thống cập nhật trạng thái chuyến đi.
+4. Khách hàng theo dõi trạng thái và thông tin chuyến đi.
+5. Tài xế đón khách.
+6. Tài xế bắt đầu chuyến đi.
+7. Hệ thống cập nhật và lưu thông tin chuyến đi trong quá trình di chuyển.
+8. Nếu phát sinh sự cố, tài xế hoặc khách hàng gửi thông tin đến hệ thống.
+9. Nhân viên vận hành tiếp nhận và xử lý trường hợp phát sinh.
+10. Tài xế đưa khách đến điểm đến.
+11. Tài xế kết thúc chuyến đi.
+12. Hệ thống cập nhật trạng thái chuyến thành hoàn thành.
+13. Hệ thống chuyển sang quy trình thanh toán.
+14. Quy trình kết thúc.
+
+### 7.3.4. Sơ đồ quy trình
+
+```mermaid
+flowchart TD
+    A([Bắt đầu]) --> B[Chuyến đi được xác nhận]
+    B --> C[Tài xế nhận thông tin chuyến]
+    C --> D[Di chuyển đến điểm đón]
+    D --> E[Cập nhật trạng thái]
+    E --> F[Khách hàng theo dõi chuyến đi]
+    F --> G[Đón khách]
+    G --> H[Bắt đầu chuyến đi]
+    H --> I[Cập nhật thông tin chuyến đi]
+
+    I --> J{Có phát sinh sự cố?}
+
+    J -- Có --> K[Gửi thông tin sự cố]
+    K --> L[Nhân viên vận hành xử lý]
+    L --> I
+
+    J -- Không --> M[Di chuyển đến điểm đến]
+    M --> N[Kết thúc chuyến đi]
+    N --> O[Cập nhật trạng thái hoàn thành]
+    O --> P[Chuyển sang thanh toán]
+    P --> Q([Kết thúc])
+```
+
+---
+
+## 7.4. Quy trình thanh toán
+
+### 7.4.1. Mục tiêu
+
+Quy trình thực hiện thanh toán cước chuyến đi bằng tiền mặt hoặc phương thức thanh toán điện tử.
+
+### 7.4.2. Tác nhân tham gia
+
+* **Khách hàng**
+* **Hệ thống**
+* **Nhà cung cấp dịch vụ thanh toán**
+* **Tài xế**
+
+### 7.4.3. Quy trình
+
+1. Chuyến đi được hoàn thành.
+2. Hệ thống xác định cước phí cuối cùng.
+3. Hệ thống xác định phương thức thanh toán của khách hàng.
+4. Nếu khách hàng thanh toán bằng tiền mặt, khách hàng thanh toán trực tiếp cho tài xế.
+5. Tài xế xác nhận đã nhận tiền.
+6. Hệ thống cập nhật trạng thái thanh toán thành công.
+7. Nếu khách hàng thanh toán điện tử, hệ thống gửi yêu cầu thanh toán đến nhà cung cấp dịch vụ thanh toán.
+8. Nhà cung cấp thanh toán xử lý giao dịch.
+9. Hệ thống nhận kết quả giao dịch.
+10. Nếu giao dịch thành công, hệ thống cập nhật trạng thái thanh toán.
+11. Nếu giao dịch thất bại, hệ thống thông báo cho khách hàng và cho phép thực hiện lại hoặc lựa chọn phương thức thanh toán khác.
+12. Hệ thống gửi thông báo kết quả thanh toán.
+13. Quy trình kết thúc.
+
+### 7.4.4. Sơ đồ quy trình
+
+```mermaid
+flowchart TD
+    A([Bắt đầu]) --> B[Chuyến đi hoàn thành]
+    B --> C[Xác định cước phí cuối cùng]
+    C --> D{Phương thức thanh toán?}
+
+    D -- Tiền mặt --> E[Khách hàng thanh toán cho tài xế]
+    E --> F[Tài xế xác nhận thanh toán]
+    F --> G[Cập nhật thanh toán thành công]
+
+    D -- Điện tử --> H[Gửi yêu cầu đến nhà cung cấp thanh toán]
+    H --> I[Nhà cung cấp xử lý giao dịch]
+    I --> J{Thanh toán thành công?}
+
+    J -- Có --> G
+    J -- Không --> K[Thông báo thanh toán thất bại]
+    K --> L{Thực hiện lại hoặc đổi phương thức?}
+    L -- Có --> D
+    L -- Không --> M[Ghi nhận thanh toán chưa hoàn tất]
+    
+    G --> N[Gửi thông báo kết quả]
+    M --> N
+    N --> O([Kết thúc])
+```
+
+---
+
+## 7.5. Quy trình đánh giá chuyến đi và tài xế
+
+### 7.5.1. Mục tiêu
+
+Cho phép khách hàng đánh giá chất lượng chuyến đi và tài xế sau khi chuyến đi hoàn tất.
+
+### 7.5.2. Quy trình
+
+1. Chuyến đi được hoàn thành.
+2. Hệ thống gửi yêu cầu đánh giá đến khách hàng.
+3. Khách hàng lựa chọn mức đánh giá và nhập nhận xét nếu cần.
+4. Hệ thống kiểm tra dữ liệu đánh giá.
+5. Hệ thống lưu đánh giá.
+6. Hệ thống cập nhật dữ liệu đánh giá của tài xế.
+7. Dữ liệu đánh giá được sử dụng cho việc theo dõi và đánh giá hiệu quả tài xế.
+8. Quy trình kết thúc.
+
+### 7.5.3. Sơ đồ quy trình
+
+```mermaid
+flowchart TD
+    A([Bắt đầu]) --> B[Chuyến đi hoàn thành]
+    B --> C[Gửi yêu cầu đánh giá]
+    C --> D[Khách hàng đánh giá tài xế]
+    D --> E{Dữ liệu hợp lệ?}
+    E -- Không --> F[Thông báo lỗi]
+    F --> D
+    E -- Có --> G[Lưu đánh giá]
+    G --> H[Cập nhật dữ liệu đánh giá tài xế]
+    H --> I([Kết thúc])
+```
+
+---
+
+## 7.6. Quy trình quản lý và vận hành
+
+### 7.6.1. Mục tiêu
+
+Hỗ trợ nhân viên vận hành quản lý khách hàng, tài xế, phương tiện và các chuyến đi đang diễn ra.
+
+### 7.6.2. Tác nhân tham gia
+
+* **Nhân viên vận hành**
+* **Hệ thống**
+* **Khách hàng**
+* **Tài xế**
+
+### 7.6.3. Quy trình
+
+1. Nhân viên vận hành đăng nhập hệ thống.
+2. Hệ thống xác thực tài khoản và quyền truy cập.
+3. Nhân viên lựa chọn chức năng cần quản lý.
+4. Hệ thống cung cấp thông tin tương ứng về khách hàng, tài xế, phương tiện hoặc chuyến đi.
+5. Nhân viên theo dõi trạng thái hoạt động của tài xế và chuyến đi.
+6. Khi phát hiện vấn đề, nhân viên tiếp nhận và xử lý.
+7. Hệ thống cập nhật kết quả xử lý.
+8. Hệ thống lưu vết các thao tác quản trị quan trọng.
+9. Quy trình kết thúc.
+
+### 7.6.4. Sơ đồ quy trình
+
+```mermaid
+flowchart TD
+    A([Bắt đầu]) --> B[Nhân viên vận hành đăng nhập]
+    B --> C{Xác thực và phân quyền}
+    C -- Không hợp lệ --> D[Từ chối truy cập]
+    D --> E([Kết thúc])
+
+    C -- Hợp lệ --> F[Truy cập chức năng quản lý]
+    F --> G{Đối tượng quản lý?}
+
+    G -- Khách hàng --> H[Quản lý thông tin khách hàng]
+    G -- Tài xế --> I[Quản lý tài xế và trạng thái hoạt động]
+    G -- Phương tiện --> J[Quản lý phương tiện]
+    G -- Chuyến đi --> K[Theo dõi và quản lý chuyến đi]
+
+    H --> L{Có vấn đề cần xử lý?}
+    I --> L
+    J --> L
+    K --> L
+
+    L -- Có --> M[Xử lý trường hợp phát sinh]
+    M --> N[Cập nhật kết quả]
+    N --> O[Lưu vết thao tác]
+
+    L -- Không --> O
+    O --> E([Kết thúc])
+```
+
+---
+
+## 7.7. Quy trình quản lý thông báo
+
+### 7.7.1. Mục tiêu
+
+Đảm bảo khách hàng và tài xế nhận được thông tin kịp thời về các sự kiện liên quan đến đặt xe, phân công tài xế, chuyến đi và thanh toán.
+
+### 7.7.2. Quy trình
+
+1. Hệ thống phát sinh một sự kiện nghiệp vụ.
+2. Hệ thống xác định đối tượng cần nhận thông báo.
+3. Hệ thống xác định loại thông báo và kênh gửi.
+4. Hệ thống gửi thông báo.
+5. Hệ thống kiểm tra kết quả gửi.
+6. Nếu gửi thành công, hệ thống ghi nhận trạng thái thông báo.
+7. Nếu gửi thất bại, hệ thống ghi nhận lỗi và thực hiện cơ chế gửi lại theo cấu hình.
+8. Quy trình kết thúc.
+
+### 7.7.3. Sơ đồ quy trình
+
+```mermaid
+flowchart TD
+    A([Bắt đầu]) --> B[Phát sinh sự kiện nghiệp vụ]
+    B --> C[Xác định đối tượng nhận]
+    C --> D[Xác định loại và kênh thông báo]
+    D --> E[Gửi thông báo]
+    E --> F{Gửi thành công?}
+
+    F -- Có --> G[Ghi nhận trạng thái đã gửi]
+    F -- Không --> H[Ghi nhận lỗi]
+    H --> I{Có thể gửi lại?}
+    I -- Có --> E
+    I -- Không --> J[Ghi nhận thông báo thất bại]
+
+    G --> K([Kết thúc])
+    J --> K
+```
+
+---
+
+## 7.8. Quy trình báo cáo và đánh giá hiệu quả kinh doanh
+
+### 7.8.1. Mục tiêu
+
+Cung cấp thông tin phục vụ quản lý, theo dõi hoạt động kinh doanh và đánh giá hiệu quả vận hành.
+
+### 7.8.2. Quy trình
+
+1. Nhân viên quản lý truy cập chức năng báo cáo.
+2. Nhân viên lựa chọn loại báo cáo và khoảng thời gian.
+3. Hệ thống truy xuất dữ liệu liên quan.
+4. Hệ thống tổng hợp và tính toán các chỉ số.
+5. Hệ thống tạo báo cáo.
+6. Nhân viên xem báo cáo.
+7. Báo cáo có thể bao gồm:
+
+   * Số lượng chuyến đi.
+   * Doanh thu.
+   * Tỷ lệ hoàn thành chuyến.
+   * Tỷ lệ hủy chuyến.
+   * Hiệu quả hoạt động của tài xế.
+8. Nhân viên sử dụng báo cáo để theo dõi và ra quyết định.
+9. Quy trình kết thúc.
+
+### 7.8.3. Sơ đồ quy trình
+
+```mermaid
+flowchart TD
+    A([Bắt đầu]) --> B[Truy cập chức năng báo cáo]
+    B --> C[Chọn loại báo cáo và khoảng thời gian]
+    C --> D[Truy xuất dữ liệu]
+    D --> E[Tổng hợp và tính toán chỉ số]
+    E --> F[Tạo báo cáo]
+    F --> G[Hiển thị báo cáo]
+    G --> H[Phân tích và đánh giá hiệu quả]
+    H --> I([Kết thúc])
+```
+
+---
+
+## 7.9. Mối quan hệ giữa Business Requirements và Business Processes
+
+| Business Requirement                                | Business Process liên quan                                                                          |
+| --------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| **BG01 – Quản lý và đặt xe**                        | Quy trình đặt xe và phân công tài xế; Quy trình thực hiện và theo dõi chuyến đi; Quy trình đánh giá |
+| **BG02 – Quản lý và phân công tài xế**              | Quy trình đặt xe và phân công tài xế; Quy trình quản lý và vận hành                                 |
+| **BG03 – Quản lý chuyến đi và vận hành**            | Quy trình thực hiện và theo dõi chuyến đi; Quy trình quản lý và vận hành                            |
+| **BG04 – Quản lý cước phí và thanh toán**           | Quy trình thanh toán                                                                                |
+| **BG05 – Quản lý thông báo**                        | Quy trình quản lý thông báo                                                                         |
+| **BG06 – Đảm bảo tính ổn định và khả năng mở rộng** | Áp dụng xuyên suốt các quy trình nghiệp vụ                                                          |
+| **BG07 – Đảm bảo an toàn và bảo mật**               | Quy trình đăng nhập, xác thực, phân quyền và lưu vết trong các quy trình                            |
+| **BG08 – Báo cáo và đánh giá hiệu quả kinh doanh**  | Quy trình báo cáo và đánh giá hiệu quả kinh doanh                                                   |
+| **BG09 – Hỗ trợ mở rộng trong tương lai**           | Áp dụng xuyên suốt kiến trúc và các quy trình nghiệp vụ                                             |
