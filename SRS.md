@@ -318,3 +318,94 @@ Hệ thống phải cung cấp các báo cáo phục vụ quản lý và ra quy�
 ### BG09 – Hỗ trợ mở rộng trong tương lai
 
 Hệ thống phải có kiến trúc linh hoạt để có thể bổ sung loại hình dịch vụ, phương thức thanh toán, nhà cung cấp thông báo và các thành phần kỹ thuật mới mà không cần xây dựng lại toàn bộ hệ thống.
+
+Được. Dựa trực tiếp vào **BG01–BG09**, phần 7 nên vẽ **sơ đồ mô hình hóa nghiệp vụ (Business Use Case Model)**, trong đó các **Business Requirements** được chuyển thành các nhóm nghiệp vụ chính và thể hiện các tác nhân bên ngoài tương tác với hệ thống.
+
+Mình đề xuất sơ đồ dưới đây vì nó **bám sát đủ 9 Business Requirements**, nhưng không biến các yêu cầu phi chức năng như BG06, BG07, BG09 thành use case một cách máy móc.
+
+### 7. Sơ đồ mô hình hóa nghiệp vụ
+
+
+```mermaid
+flowchart LR
+
+    %% =========================
+    %% ACTORS
+    %% =========================
+    KH["👤 Khách hàng"]
+    TX["🚗 Tài xế"]
+    NV["👨‍💼 Nhân viên vận hành"]
+    QL["📊 Quản lý"]
+    PAY["💳 Nhà cung cấp thanh toán"]
+    NOTI["🔔 Nhà cung cấp thông báo"]
+
+    %% =========================
+    %% SYSTEM BOUNDARY
+    %% =========================
+    subgraph HT["HỆ THỐNG QUẢN LÝ ĐẶT XE"]
+
+        BG01["BG01<br/>Quản lý và đặt xe"]
+        BG02["BG02<br/>Quản lý và phân công tài xế"]
+        BG03["BG03<br/>Quản lý chuyến đi và vận hành"]
+        BG04["BG04<br/>Quản lý cước phí và thanh toán"]
+        BG05["BG05<br/>Quản lý thông báo"]
+        BG06["BG06<br/>Đảm bảo tính ổn định<br/>và khả năng mở rộng"]
+        BG07["BG07<br/>Đảm bảo an toàn<br/>và bảo mật"]
+        BG08["BG08<br/>Báo cáo và đánh giá<br/>hiệu quả kinh doanh"]
+        BG09["BG09<br/>Hỗ trợ mở rộng<br/>trong tương lai"]
+
+    end
+
+    %% =========================
+    %% ACTOR - BUSINESS REQUIREMENTS
+    %% =========================
+
+    KH --> BG01
+    KH --> BG04
+    KH --> BG05
+    KH --> BG07
+
+    TX --> BG02
+    TX --> BG03
+    TX --> BG05
+    TX --> BG07
+
+    NV --> BG02
+    NV --> BG03
+    NV --> BG04
+    NV --> BG05
+    NV --> BG07
+
+    QL --> BG03
+    QL --> BG08
+    QL --> BG07
+
+    PAY --> BG04
+    NOTI --> BG05
+
+    %% =========================
+    %% BUSINESS RELATIONSHIPS
+    %% =========================
+
+    BG01 --> BG02
+    BG02 --> BG03
+    BG03 --> BG04
+    BG04 --> BG05
+
+    BG06 -.-> BG01
+    BG06 -.-> BG02
+    BG06 -.-> BG03
+    BG06 -.-> BG04
+    BG06 -.-> BG05
+
+    BG07 -.-> BG01
+    BG07 -.-> BG02
+    BG07 -.-> BG03
+    BG07 -.-> BG04
+    BG07 -.-> BG05
+    BG07 -.-> BG08
+
+    BG09 -.-> BG01
+    BG09 -.-> BG04
+    BG09 -.-> BG05
+```
