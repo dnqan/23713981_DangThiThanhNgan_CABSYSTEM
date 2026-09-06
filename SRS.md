@@ -132,8 +132,6 @@ Tự động hóa và cải thiện quá trình tìm kiếm, lựa chọn và ph
 * Có khả năng tiếp tục tìm tài xế khác khi tài xế được đề xuất không phản hồi hoặc từ chối chuyến.
 * Hạn chế trường hợp khách hàng phải tạo lại yêu cầu khi việc phân công tài xế thất bại.
 
-## Yêu cầu này xuất phát trực tiếp từ vấn đề hiện tại của doanh nghiệp về việc phân công tài xế chủ yếu được thực hiện thủ công và yêu cầu xây dựng cơ chế tìm tài xế phù hợp.
-
 ### BG-03 – Nâng cao hiệu quả quản lý và vận hành
 
 **Business Goal:**
@@ -146,8 +144,6 @@ Tập trung hóa hoạt động quản lý khách hàng, tài xế, phương ti�
 * Hỗ trợ xử lý các trường hợp chuyến đi bị lỗi.
 * Tra cứu lịch sử giao dịch.
 * Phân quyền các thao tác quản trị theo vai trò.
-
-Các mục tiêu này bám theo yêu cầu quản trị và vận hành được nêu trong tài liệu.
 
 ---
 
@@ -180,8 +176,6 @@ Cung cấp thông tin kịp thời cho khách hàng và tài xế trong suốt q
 * Thông báo kết quả thanh toán.
 * Thông báo cho tài xế về chuyến mới và các thay đổi liên quan đến chuyến đang thực hiện.
 * Cho phép mở rộng thêm các kênh thông báo trong tương lai.
-
-Các yêu cầu này được nêu rõ trong phần thông báo của tài liệu.
 
 ---
 
@@ -286,8 +280,6 @@ Các chức năng được ưu tiên là những chức năng **cốt lõi để
 | 8   | **Operation Management**              | BG-03                   | Quản lý khách hàng, tài xế, phương tiện, chuyến đi; theo dõi chuyến đang diễn ra và xử lý trường hợp lỗi    | **Must Have**   |
 | 9   | **Report & Dashboard**                | BG-08                   | Báo cáo số lượng chuyến, doanh thu, tỷ lệ hoàn thành, tỷ lệ hủy và hiệu quả tài xế                          | **Should Have** |
 | 10  | **Security & Access Control**         | BG-07                   | Phân quyền quản trị, kiểm soát truy cập và lưu vết các thao tác quan trọng                                  | **Must Have**   |
-
-Đúng rồi. Ở **bước 6**, mình sẽ đặt tên Business Requirement theo dạng **BG01 – Tên Business Requirement**, bám sát các yêu cầu trong tài liệu CAB System. 
 
 # 6. Business Requirements
 
