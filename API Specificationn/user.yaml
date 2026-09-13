@@ -1,0 +1,40 @@
+openapi: 3.0.0
+info:
+  title: User Management API
+  version: 1.0.0
+  description: Quản lý tài khoản cá nhân và người dùng trong hệ thống.
+paths:
+  /users/me:
+    get:
+      summary: Lấy thông tin tài khoản cá nhân
+      responses:
+        '200':
+          description: Thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserProfile'
+    put:
+      summary: Cập nhật thông tin cá nhân
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserProfile'
+      responses:
+        '200':
+          description: Cập nhật thành công
+
+components:
+  schemas:
+    UserProfile:
+      type: object
+      properties:
+        id:
+          type: integer
+        full_name:
+          type: string
+        email:
+          type: string
+        phone_number:
+          type: string
