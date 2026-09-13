@@ -1,0 +1,24 @@
+openapi: 3.0.0
+info:
+  title: Driver Management API
+  version: 1.0.0
+  description: Quản lý hồ sơ và thông tin tài xế.
+paths:
+  /drivers:
+    get:
+      summary: Danh sách tài xế
+      responses:
+        '200':
+          description: Danh sách tài xế thành công
+  /drivers/{id}:
+    get:
+      summary: Xem chi tiết hồ sơ tài xế
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Thông tin tài xế
