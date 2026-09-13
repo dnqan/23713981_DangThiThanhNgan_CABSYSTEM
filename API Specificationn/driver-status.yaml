@@ -1,0 +1,24 @@
+openapi: 3.0.0
+info:
+  title: Driver Status & Location API
+  version: 1.0.0
+  description: Cập nhật vị trí và trạng thái hoạt động của tài xế.
+paths:
+  /driver-status/location:
+    post:
+      summary: Cập nhật vị trí GPS tài xế
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                driver_id:
+                  type: integer
+                latitude:
+                  type: number
+                longitude:
+                  type: number
+      responses:
+        '200':
+          description: Cập nhật vị trí thành công
