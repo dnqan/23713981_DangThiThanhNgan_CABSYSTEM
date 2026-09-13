@@ -1,0 +1,23 @@
+openapi: 3.0.0
+info:
+  title: Report & Analytics API
+  version: 1.0.0
+  description: Báo cáo thống kê chuyến đi, doanh thu cho admin/vận hành.
+paths:
+  /reports/revenue:
+    get:
+      summary: Xem báo cáo doanh thu theo khoảng thời gian
+      parameters:
+        - name: start_date
+          in: query
+          schema:
+            type: string
+            format: date
+        - name: end_date
+          in: query
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: Dữ liệu báo cáo doanh thu
