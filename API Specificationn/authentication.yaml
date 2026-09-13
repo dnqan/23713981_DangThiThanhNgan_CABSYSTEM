@@ -1,0 +1,59 @@
+openapi: 3.0.0
+info:
+  title: Authentication API
+  version: 1.0.0
+  description: API xác thực, đăng nhập, đăng ký và cấp quyền truy cập.
+paths:
+  /auth/login:
+    post:
+      summary: Đăng nhập hệ thống
+      operationId: login
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [username, password]
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: Đăng nhập thành công
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+                  user_id:
+                    type: integer
+        '401':
+          description: Sai thông tin đăng nhập
+
+  /auth/register:
+    post:
+      summary: Đăng ký tài khoản mới
+      operationId: register
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [phone_number, password, role]
+              properties:
+                phone_number:
+                  type: string
+                password:
+                  type: string
+                role:
+                  type: string
+                  enum: [CUSTOMER, DRIVER]
+      responses:
+        '201':
+          description: Đăng ký thành công
