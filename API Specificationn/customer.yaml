@@ -1,0 +1,20 @@
+openapi: 3.0.0
+info:
+  title: Customer Management API
+  version: 1.0.0
+  description: Quản lý thông tin profile khách hàng.
+paths:
+  /customers/{id}:
+    get:
+      summary: Lấy chi tiết thông tin khách hàng
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Thông tin chi tiết khách hàng
+        '404':
+          description: Không tìm thấy khách hàng
