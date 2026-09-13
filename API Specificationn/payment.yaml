@@ -1,0 +1,25 @@
+openapi: 3.0.0
+info:
+  title: Payment API
+  version: 1.0.0
+  description: Xử lý cước phí và thanh toán tiền mặt/ví điện tử.
+paths:
+  /payments/process:
+    post:
+      summary: Xử lý thanh toán chuyến đi
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                trip_id:
+                  type: integer
+                amount:
+                  type: number
+                payment_method:
+                  type: string
+                  enum: [CASH, E_WALLET, CREDIT_CARD]
+      responses:
+        '200':
+          description: Thanh toán thành công
