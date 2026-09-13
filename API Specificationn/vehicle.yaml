@@ -1,0 +1,29 @@
+openapi: 3.0.0
+info:
+  title: Vehicle API
+  version: 1.0.0
+  description: Quản lý thông tin phương tiện vận chuyển.
+paths:
+  /vehicles:
+    get:
+      summary: Danh sách phương tiện
+      responses:
+        '200':
+          description: Thành công
+    post:
+      summary: Thêm phương tiện mới
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                license_plate:
+                  type: string
+                brand:
+                  type: string
+                vehicle_type:
+                  type: string
+      responses:
+        '201':
+          description: Tạo phương tiện thành công
