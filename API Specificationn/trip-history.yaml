@@ -1,0 +1,17 @@
+openapi: 3.0.0
+info:
+  title: Trip History API
+  version: 1.0.0
+  description: Xem lịch sử chuyến đi của khách hàng/tài xế.
+paths:
+  /trip-history:
+    get:
+      summary: Lấy lịch sử các chuyến đi
+      parameters:
+        - name: user_id
+          in: query
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Danh sách lịch sử chuyến đi
