@@ -1,0 +1,27 @@
+openapi: 3.0.0
+info:
+  title: Trip API
+  version: 1.0.0
+  description: Điều phối và theo dõi tiến trình chuyến đi.
+paths:
+  /trips/{id}/status:
+    patch:
+      summary: Cập nhật trạng thái chuyến đi (Pickup, In-progress, Completed)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  enum: [STARTED, PICKED_UP, COMPLETED, CANCELLED]
+      responses:
+        '200':
+          description: Cập nhật thành công
