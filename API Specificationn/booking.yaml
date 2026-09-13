@@ -1,0 +1,40 @@
+openapi: 3.0.0
+info:
+  title: Booking API
+  version: 1.0.0
+  description: Quản lý việc đặt xe, ước tính chi phí.
+paths:
+  /bookings/estimate:
+    post:
+      summary: Tính cước ước tính cho quãng đường
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                pickup_location:
+                  type: string
+                dropoff_location:
+                  type: string
+      responses:
+        '200':
+          description: Trả về giá ước tính
+  /bookings:
+    post:
+      summary: Tạo yêu cầu đặt xe mới
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                customer_id:
+                  type: integer
+                pickup_location:
+                  type: string
+                dropoff_location:
+                  type: string
+      responses:
+        '201':
+          description: Đặt xe thành công
