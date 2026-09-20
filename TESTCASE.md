@@ -1,11 +1,3 @@
-Lỗi vỡ bảng này là do thẻ xuống dòng `<br>` trong Markdown làm ngắt ô giữa chừng!
-
-Để khắc phục hoàn toàn lỗi này và giúp bạn **copy thẳng vào Excel không bị tràn dòng**, mình đã bỏ hết thẻ `<br>` và gom nội dung `Test Steps` thành các câu liền nhau (phân cách bằng dấu chấm phẩy `;`).
-
-Bạn copy lại toàn bộ bảng bên dưới nhé:
-
----
-
 # BP-01 – Tạo yêu cầu đặt xe (Booking Management)
 
 | Test Case ID | Test Scenario | Test Case | Preconditions | Test Steps | Test Data | Expected Result | Priority |
