@@ -1,9 +1,5 @@
 # CAB System – Test Scenario & Test Case
 
-> Bộ kiểm thử được xây dựng dựa trên SRS/API của CAB System và tham khảo cách trình bày `TESTCASE.md` trong repository mẫu.
->
-> Quy ước: mỗi Business Process được xem là một **Test Scenario** lớn; mỗi Test Scenario có tối đa **20 Test Case** và bao phủ tối thiểu 5 nhóm: **Positive, Negative, Boundary, Empty, Invalid Format/Type**.
-
 ## 1. Danh sách Test Scenario
 
 | Test Scenario ID | Test Scenario | Functional Requirements | Acceptance Criteria | Số Test Case |
