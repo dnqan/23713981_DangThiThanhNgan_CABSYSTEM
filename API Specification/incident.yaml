@@ -1,0 +1,24 @@
+openapi: 3.0.0
+info:
+  title: Incident API
+  version: 1.0.0
+  description: Quản lý và báo cáo sự cố trong chuyến đi.
+paths:
+  /incidents:
+    post:
+      summary: Báo cáo sự cố mới
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                trip_id:
+                  type: integer
+                description:
+                  type: string
+                incident_type:
+                  type: string
+      responses:
+        '201':
+          description: Gửi báo cáo sự cố thành công
